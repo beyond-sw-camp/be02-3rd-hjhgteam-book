@@ -14,7 +14,7 @@
                 <section>
                     <div>
                         <div class="signup-box-main">
-                            <form method="post" action="http://3.34.199.45:8080/member/signup" onsubmit="signup()">
+                            <form @submit.prevent="signup()" method="post" action="http://localhost:8080/member/signup">
                                 <div class="signup-box-main-email">
                                     <label value="false" class="signup-box-main-email-label">
                                         <div class="signup-box-main-email-label-text">
@@ -23,7 +23,7 @@
                                                 placeholder="이메일"
                                                 type="email"
                                                 name="email"
-                                                v-model="emailId"
+                                                v-model="member.email"
                                                 id="emailText"
                                                 class="signup-box-main-email-label-input"
                                             />
@@ -47,7 +47,7 @@
                                                 placeholder="비밀번호"
                                                 type="password"
                                                 name="password"
-                                                v-model="password1"
+                                                v-model="member.password"
                                                 id="passwordText1"
                                                 class="signup-box-main-pw-label-input"
                                             />
@@ -71,7 +71,6 @@
                                                 placeholder="비밀번호 확인"
                                                 type="password"
                                                 name="password"
-                                                v-model="password2"
                                                 id="passwordText2"
                                                 class="signup-box-main-pw-label-input"
                                             />
@@ -128,13 +127,17 @@
                                         class="signup-box-main-lang-kor"
                                     ></span>
                                 </button>
-                                <button id="signupBtn" type="submit" class="signup-box-main-submit">회원가입</button>
+                                <button @click="signup()" id="signupBtn" type="submit" class="signup-box-main-submit">
+                                    회원가입
+                                </button>
                             </form>
                             <div class="signup-box-main-login">
                                 이미 가입하셨나요?
-                                <button onclick="location.href='/login'" class="signup-box-main-login-button">
-                                    로그인
-                                </button>
+                                <router-link to="/login">
+                                    <button onclick="location.href='/login'" class="signup-box-main-login-button">
+                                        로그인
+                                    </button>
+                                </router-link>
                             </div>
                             <hr class="signup-box-main-divide" />
                             <ul class="signup-box-main-socialsignup">
@@ -188,16 +191,35 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
     name: "SignupComponent",
     data() {
         return {
-            emailId: "",
-            password1: "",
-            password2: "",
+            member: { email: "", password: "" },
         };
     },
-    method() {},
+    methods: {
+        async signup() {
+            let email = document.getElementById("emailText").value;
+            let password1 = document.getElementById("passwordText1").value;
+            let password2 = document.getElementById("passwordText2").value;
+
+            let formData = new FormData();
+
+            formData.append("email", email);
+
+            if (password1 == password2) {
+                formData.append("password", password1);
+                let response = await axios.post("http://localhost:8080/member/signup", this.member);
+
+                console.log(response);
+            } else {
+                alert("wrong password!");
+            }
+        },
+    },
 };
 </script>
 

@@ -14,7 +14,7 @@
                 <section>
                     <div>
                         <div class="login-box-main">
-                            <form method="post" action="http://3.34.199.45:8080/member/login" onsubmit="login()">
+                            <form @submit.prevent="login()" method="post" action="http://localhost:8080/member/login">
                                 <div class="login-box-form-id">
                                     <label value="false" class="login-box-form-id-label">
                                         <div class="login-box-form-id-label-text">
@@ -24,7 +24,7 @@
                                                 type="email"
                                                 name="email"
                                                 id="emailText"
-                                                v-model="emailId"
+                                                v-model="member.email"
                                                 class="login-box-form-id-label-text-input"
                                             />
                                         </div>
@@ -77,7 +77,7 @@
                                                 type="password"
                                                 name="password"
                                                 id="passwordText"
-                                                v-model="password"
+                                                v-model="member.password"
                                                 class="login-box-form-pw-label-text-input"
                                             />
                                         </div>
@@ -123,16 +123,18 @@
                     비밀번호는 최소 6자리 이상이어야 합니다.
                   </p> -->
                                 </div>
-                                <button type="submit" id="loginBtn" class="login-box-form-button">로그인</button>
+                                <button @click="login()" type="submit" id="loginBtn" class="login-box-form-button">
+                                    로그인
+                                </button>
                             </form>
                             <div class="login-box-findpw">
                                 <button class="login-box-findpw-button">비밀번호를 잊어버리셨나요?</button>
                             </div>
                             <div class="login-box-signup">
                                 계정이 없으신가요?
-                                <button onclick="location.href='/signup'" class="login-box-signup-button">
-                                    회원가입
-                                </button>
+                                <router-link to="/signup"
+                                    ><button class="login-box-signup-button">회원가입</button>
+                                </router-link>
                             </div>
                             <hr class="login-box-divide" />
                             <ul class="login-box-sociallogin">
@@ -187,15 +189,30 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
     name: "LoginComponent",
     data() {
         return {
-            emailId: "",
-            password: "",
+            member: { email: "", password: "" },
         };
     },
-    method() {},
+    methods: {
+        async login() {
+            let email = document.getElementById("emailText").value;
+            let password = document.getElementById("passwordText").value;
+
+            let formData = new FormData();
+
+            formData.append("email", email);
+            formData.append("password", password);
+
+            let response = await axios.post("http://localhost:8080/member/login", this.member);
+            console.log(response.data.token);
+            window.localStorage.accessToken = response.data.token;
+        },
+    },
 };
 </script>
 
