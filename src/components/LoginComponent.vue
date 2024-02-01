@@ -200,18 +200,14 @@ export default {
     },
     methods: {
         async login() {
-            let email = document.getElementById("emailText").value;
-            let password = document.getElementById("passwordText").value;
-
-            let formData = new FormData();
-
-            formData.append("email", email);
-            formData.append("password", password);
-
             let response = await axios.post("http://localhost:8080/member/login", this.member);
-            console.log(response.data.token);
             window.localStorage.accessToken = response.data.token;
         },
+        clickSide() {
+            document.getElementById("root").addEventListener('click' () => {
+
+            })
+        }
     },
 };
 </script>
@@ -228,7 +224,7 @@ export default {
 }
 .login {
     display: inline-block;
-    position: relative;
+    position: fixed;
     vertical-align: middle;
     text-align: left;
     width: 375px;
@@ -239,6 +235,10 @@ export default {
 
     background: rgb(255, 255, 255);
     box-shadow: rgba(0, 0, 0, 0.12) 0px 0px 6px 0px;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .login-box {
@@ -628,6 +628,9 @@ export default {
 .login-box-sociallogin-kakao {
     display: block;
 }
+.login-box-sociallogin-kakao::after {
+    content: none;
+}
 
 .login-box-sociallogin-kakao-button {
     display: flex;
@@ -652,6 +655,9 @@ export default {
 
 .login-box-sociallogin-goole {
     display: block;
+}
+.login-box-sociallogin-goole::after {
+    content: none;
 }
 
 .login-box-sociallogin-goole-button {
@@ -679,6 +685,10 @@ export default {
     display: block;
 }
 
+.login-box-sociallogin-twit::after {
+    content: none;
+}
+
 .login-box-sociallogin-twit-button {
     display: flex;
     position: relative;
@@ -704,6 +714,10 @@ export default {
     display: block;
 }
 
+.login-box-sociallogin-apple::after {
+    content: none;
+}
+
 .login-box-sociallogin-apple-button {
     display: flex;
     position: relative;
@@ -727,6 +741,10 @@ export default {
 
 .login-box-sociallogin-line {
     display: block;
+}
+
+.login-box-sociallogin-line::after {
+    content: none;
 }
 
 .login-box-sociallogin-line-button {

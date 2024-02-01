@@ -19,18 +19,29 @@
                             <form action="#">
                                 <label class="header-search-label">
                                     <i class="fa-solid fa-magnifying-glass"></i>
-                                    <input autocomplete="off" id="desktop-search-field" placeholder="컨텐츠, 작가, 장르를 검색해보세요."
-                                        type="text" name="searchKeyword" class="header-search-text" value="" />
+                                    <input
+                                        autocomplete="off"
+                                        id="desktop-search-field"
+                                        placeholder="컨텐츠, 작가, 장르를 검색해보세요."
+                                        type="text"
+                                        name="searchKeyword"
+                                        class="header-search-text"
+                                        value=""
+                                    />
                                 </label>
                             </form>
                         </div>
                     </div>
                 </li>
                 <li class="header-icon-list">
-                    <button class="header-icon-login-btn">로그인</button>
+                    <router-link to="/login">
+                        <button class="header-icon-login-btn">로그인</button>
+                    </router-link>
                 </li>
                 <li class="header-icon-list">
-                    <button class="header-icon-signup-btn">회원가입</button>
+                    <router-link to="/signup">
+                        <button class="header-icon-signup-btn">회원가입</button>
+                    </router-link>
                 </li>
             </ul>
         </div>
@@ -38,7 +49,7 @@
 </template>
 <script>
 export default {
-    name: 'HeaderComponent',
+    name: "HeaderComponent",
     data() {
         return {
             logoImg: "https://github.com/Hyeon-Kyun/frontend/assets/96675421/a877995e-6e1c-40e4-acd0-e49fbf08f023", //변경필요
@@ -53,13 +64,14 @@ body {
 }
 
 .header {
-    min-width: 760px;
-    margin: 0 3.5%;
+    /* min-width: 760px; */
+    /* margin: 0 3.5%; */
     display: block;
     height: 62px;
     top: 0px;
     left: 0;
     box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.08);
+    width: 100%;
 }
 
 .header-icon {

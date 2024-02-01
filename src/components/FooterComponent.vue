@@ -5,9 +5,7 @@
                 <ul class="footer-left-list1">
                     <li class="footer-left-list1-text1">서비스 이용약관</li>
                     <li class="footer-left-list1-text2">개인정보 처리방침</li>
-                    <a href="http://team.watcha.com/" class="footer-left-list-link">
-                        회사 안내
-                    </a>
+                    <a href="http://team.watcha.com/" class="footer-left-list-link"> 회사 안내 </a>
                 </ul>
                 <ul class="footer-left-list2">
                     <li class="footer-left-list1-text1">고객센터</li>
@@ -29,20 +27,14 @@
                 <ul class="footer-left-list3">
                     <li class="footer-left-list1-text1">주식회사 왓챠</li>
                     <li class="footer-left-list1-text1">대표 박태훈</li>
-                    <li class="footer-left-list1-text1">
-                        서울특별시 서초구 강남대로 343 신덕빌딩 3층
-                    </li>
+                    <li class="footer-left-list1-text1">서울특별시 서초구 강남대로 343 신덕빌딩 3층</li>
                 </ul>
                 <ul class="footer-left-list1">
-                    <li class="footer-left-list1-text1">
-                        사업자 등록 번호<span> 211-88-66013</span>
-                    </li>
+                    <li class="footer-left-list1-text1">사업자 등록 번호<span> 211-88-66013</span></li>
                 </ul>
                 <ul class="footer-left-list4" id="footer-logo-img">
                     <img :src="logoImg" class="footer-left-list-img" />
-                    <li class="footer-left-list4-text">
-                        © 2022 by WATCHA, Inc. All rights reserved.
-                    </li>
+                    <li class="footer-left-list4-text">© 2022 by WATCHA, Inc. All rights reserved.</li>
                 </ul>
             </div>
             <div class="footer-left"></div>
@@ -53,10 +45,10 @@
 
 <script>
 export default {
-    name: 'FooterComponent',
+    name: "FooterComponent",
     data() {
         return {
-            logoImg:"https://github.com/Hyeon-Kyun/frontend/assets/96675421/a877995e-6e1c-40e4-acd0-e49fbf08f023", //변경필요
+            logoImg: "https://github.com/Hyeon-Kyun/frontend/assets/96675421/a877995e-6e1c-40e4-acd0-e49fbf08f023", //변경필요
         };
     },
 };
@@ -66,6 +58,9 @@ export default {
 .footer {
     background-color: rgb(28, 29, 31);
     padding: 20px 0px 38px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
 }
 
 .footer-box {
@@ -80,7 +75,7 @@ export default {
     flex: 1 1 0%;
 }
 
-div>ul>li::after {
+div > ul > li::after {
     content: "|";
     float: right;
     display: block;
@@ -88,11 +83,11 @@ div>ul>li::after {
     padding-right: 3px;
 }
 
-nav>div>ul>li::after {
+nav > div > ul > li::after {
     content: "";
 }
 
-div>ul>li:last-child:after {
+div > ul > li:last-child:after {
     content: "";
 }
 

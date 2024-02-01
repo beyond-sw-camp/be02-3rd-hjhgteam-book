@@ -235,7 +235,7 @@ export default {
 }
 .signup {
     display: inline-block;
-    position: relative;
+    position: fixed;
     vertical-align: middle;
     text-align: left;
     width: 375px;
@@ -246,6 +246,10 @@ export default {
 
     background: rgb(255, 255, 255);
     box-shadow: rgba(0, 0, 0, 0.12) 0px 0px 6px 0px;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .signup-box {
@@ -576,6 +580,10 @@ export default {
     display: block;
 }
 
+.signup-box-main-socialsignup-kakao::after {
+    content: none;
+}
+
 .signup-box-main-socialsignup-kakao-button {
     display: flex;
     position: relative;
@@ -599,6 +607,10 @@ export default {
 
 .signup-box-main-socialsignup-google {
     display: block;
+}
+
+.signup-box-main-socialsignup-google::after {
+    content: none;
 }
 
 .signup-box-main-socialsignup-google-button {
@@ -626,6 +638,10 @@ export default {
     display: block;
 }
 
+.signup-box-main-socialsignup-twit::after {
+    content: none;
+}
+
 .signup-box-main-socialsignup-twit-button {
     display: flex;
     position: relative;
@@ -651,6 +667,10 @@ export default {
     display: block;
 }
 
+.signup-box-main-socialsignup-apple::after {
+    content: none;
+}
+
 .signup-box-main-socialsignup-apple-button {
     display: flex;
     position: relative;
@@ -674,6 +694,10 @@ export default {
 
 .signup-box-main-socialsignup-line {
     display: block;
+}
+
+.signup-box-main-socialsignup-line::after {
+    content: none;
 }
 
 .signup-box-main-socialsignup-line-button {
