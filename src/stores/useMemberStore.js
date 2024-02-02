@@ -7,7 +7,7 @@ const backend = "http://localhost:8080";
 export const useMemberStore = defineStore("member", {
     state: () => ({ member: { email: "" } }),
     actions: {
-        async login(email, password) {
+        async login(email, password) {  
             let loginMember = { email: email, password: password };
             try {
                 let response = await axios.post(backend + "/member/login", loginMember);
@@ -16,6 +16,7 @@ export const useMemberStore = defineStore("member", {
                     console.log(VueJwtDecode.decode(response.data.token));
                     let userClaims = VueJwtDecode.decode(response.data.token);
                     this.member.email = userClaims.username;
+                    this.member.nickname = userClaims.nickname;
                 }
             } catch (e) {
                 console.log("로그인 실패");

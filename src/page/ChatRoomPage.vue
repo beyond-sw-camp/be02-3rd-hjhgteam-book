@@ -15,11 +15,18 @@
   
 <script>
 import axios from 'axios';
+import { useMemberStore } from '../stores/useMemberStore.js';
 
 export default {
 
     props: ['roomName'],
+    setup() {
+        const memberStore = useMemberStore();
 
+        return {
+            memberStore,
+        };
+    },
     data() {
         return {
             logoImg: "https://image-comic.pstatic.net/webtoon/796152/thumbnail/thumbnail_IMAG21_26b9c1d8-ca2d-4fc7-87ea-a3334634236a.jpg", //content db와 연결해서 roomName에 맞는 이미지 가져오는 것으로 수정 필요
@@ -54,11 +61,10 @@ export default {
             } catch (error) {
                 console.error("Error fetching messages:", error);
             }
-
             const chatMessage = {
                 type: "ENTER",
                 roomName: this.roomName,
-                sender: `user${this.randomInt}`, //user db와 연결해서 token으로 user nickname을 받아오도록 수정 필요
+                sender: this.memberStore.member.nickname, // use the member store heres
             };
             this.socket.send(JSON.stringify(chatMessage));
         },
@@ -76,7 +82,7 @@ export default {
             const chatMessage = {
                 type: "TEXT",
                 roomName: this.roomName,
-                sender: `user${this.randomInt}`,
+                sender: this.memberStore.member.nickname, // use the member store here
                 message: messageContent,
             };
 
@@ -89,7 +95,6 @@ export default {
 </script>
   
 <style>
-
 .chatRoom {
     display: flex;
     justify-content: center;
@@ -121,14 +126,14 @@ export default {
     /* Center child elements horizontally */
 }
 
-#message{
+#message {
     width: 300px;
     height: 20px;
 
 }
 
 
-#send{
+#send {
     position: relative;
     top: 1px;
     margin-left: 10px;
