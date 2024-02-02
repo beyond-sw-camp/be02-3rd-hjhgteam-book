@@ -23,7 +23,7 @@
                                                 placeholder="이메일"
                                                 type="email"
                                                 name="email"
-                                                v-model="email"
+                                                v-model="member.email"
                                                 id="emailText"
                                                 class="signup-box-main-email-label-input"
                                             />
@@ -47,7 +47,7 @@
                                                 placeholder="비밀번호"
                                                 type="password"
                                                 name="password"
-                                                v-model="password1"
+                                                v-model="member.password"
                                                 id="passwordText1"
                                                 class="signup-box-main-pw-label-input"
                                             />
@@ -72,7 +72,7 @@
                                                 type="password"
                                                 name="password"
                                                 id="passwordText2"
-                                                v-model="password2"
+                                                v-model="member.password2"
                                                 class="signup-box-main-pw-label-input"
                                             />
                                         </div>
@@ -129,7 +129,7 @@
                                     ></span>
                                 </button>
                                 <button
-                                    @click="memberStore.signup(email, password1, password2)"
+                                    @click="memberStore.signup(member.email, member.password1, member.password2)"
                                     id="signupBtn"
                                     class="signup-box-main-submit"
                                 >
@@ -221,7 +221,7 @@ export default {
 
             // formData.append("email", email);
 
-            if (this.password1 == this.password2) {
+            if (this.member.password1 == this.member.password2) {
                 // formData.append("password", password1);
                 let response = await axios.post("http://localhost:8080/member/signup", this.member);
                 if (response.status === 200) {

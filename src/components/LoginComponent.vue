@@ -1,5 +1,5 @@
 <template>
-    <div id="root" @click="back()">
+    <div id="root">
         <div id="app" class="login">
             <div class="login-box">
                 <header class="login-box-header">
@@ -24,7 +24,7 @@
                                                 type="email"
                                                 name="email"
                                                 id="emailText"
-                                                v-model="email"
+                                                v-model="member.email"
                                                 class="login-box-form-id-label-text-input"
                                             />
                                         </div>
@@ -77,7 +77,7 @@
                                                 type="password"
                                                 name="password"
                                                 id="passwordText"
-                                                v-model="password"
+                                                v-model="member.password"
                                                 class="login-box-form-pw-label-text-input"
                                             />
                                         </div>
@@ -124,7 +124,7 @@
                   </p> -->
                                 </div>
                                 <button
-                                    @click="memberStore.login(email, password)"
+                                    @click="memberStore.login(member.email, member.password)"
                                     id="loginBtn"
                                     type="submit"
                                     class="login-box-form-button"
@@ -217,6 +217,7 @@ export default {
                 sessionStorage.setItem("aToken", response.data.token);
                 window.location.href = "/";
             }
+        },
     },
 };
 </script>

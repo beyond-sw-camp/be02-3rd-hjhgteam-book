@@ -1,8 +1,8 @@
 <template>
     <HeaderComponent />
-    <div class="main">
+    <!-- <div class="main"> -->
         <router-view></router-view>
-    </div>
+    <!-- </div> -->
     <FooterComponent />
 </template>
 
@@ -13,6 +13,7 @@ import FooterComponent from "./components/FooterComponent.vue";
 export default {
     name: "App",
     components: {
+       
         HeaderComponent,
         FooterComponent,
     },
@@ -20,7 +21,7 @@ export default {
 </script>
 
 <style>
-.main {
+.main{
     /* height: 500px; */
     text-align: center;
 }

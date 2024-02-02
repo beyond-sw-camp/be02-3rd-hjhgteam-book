@@ -247,6 +247,7 @@ li {
     font-size: 12px;
     font-weight: bold;
     line-height: 16px;
+    text-align: center;
 }
 
 .line {

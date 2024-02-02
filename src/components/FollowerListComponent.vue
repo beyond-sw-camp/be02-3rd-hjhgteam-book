@@ -39,7 +39,7 @@ methods: {
             let response = await axios.get("http://54.180.123.100:8888/follow/list/followers",
                 {
                     headers: {
-                        Authorization: "Bearer " + "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Imd1c3duMTI4MUBuYXZlci5jb20iLCJpZCI6MiwiaWF0IjoxNzA2NzU1MDgxLCJleHAiOjEwMjQwNTMwNTM3ODYwMDB9.--LgioppWbeCD2HfMM_u0G0PYTRt09h-EBbOUJJ9LXY"
+                        Authorization: "Bearer " + "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Imd1c3duMjgwMUBnbWFpbC5jb20iLCJpZCI6MTUsImlhdCI6MTcwNjg0OTc4MiwiZXhwIjoxMDI0MTA5ODcxMjczMDAwfQ.0QldCc7GoXU57C9kQivO-9Ni3sBeveIgNs3DgtIuYf0"
                     }
                 });
             this.followerList = response.data;

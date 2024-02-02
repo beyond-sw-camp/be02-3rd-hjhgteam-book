@@ -94,7 +94,7 @@ export default {
 };
 </script>
   
-<style>
+<style scoped>
 .chatRoom {
     display: flex;
     justify-content: center;

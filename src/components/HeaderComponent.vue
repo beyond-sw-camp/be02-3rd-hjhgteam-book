@@ -38,12 +38,17 @@
                 </li>
                 <li class="header-icon-list">
                     <router-link to="/login">
-                        <button id="userLogin" class="header-icon-login-btn">로그인</button>
+                        <button class="header-icon-login-btn">로그인</button>
                     </router-link>
                 </li>
-                <li id="userName" class="header-icon-list">
+                <li class="header-icon-list">
                     <router-link to="/signup">
-                        <button id="userSignup" class="header-icon-signup-btn">회원가입</button>
+                        <button class="header-icon-signup-btn">회원가입</button>
+                    </router-link>
+                </li>
+                <li class="header-icon-list">
+                    <router-link to="/mypage">
+                        <button class="header-icon-signup-btn">마이페이지</button>
                     </router-link>
                 </li>
             </ul>
@@ -61,13 +66,13 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 body {
     margin: 0px 0px 0px 0px;
 }
 
 .header {
-    min-width: 760px;
+    /* min-width: 760px; */
     /* margin: 0 3.5%; */
     display: block;
     height: 62px;
