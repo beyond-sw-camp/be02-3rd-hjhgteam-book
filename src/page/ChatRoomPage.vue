@@ -64,13 +64,13 @@ export default {
             const chatMessage = {
                 type: "ENTER",
                 roomName: this.roomName,
-                sender: this.memberStore.member.nickname, // use the member store heres
+                sender: this.memberStore.member.nickname, 
             };
             this.socket.send(JSON.stringify(chatMessage));
         },
         handleSocketMessage(event) {
             const message = JSON.parse(event.data);
-            if (message.sender !== `user${this.randomInt}`) {
+            if (message.sender !== this.memberStore.member.nickname) {
                 this.messagesArea.value += `\n${message.sender} : ${message.message}`;
             }
         },
@@ -82,7 +82,7 @@ export default {
             const chatMessage = {
                 type: "TEXT",
                 roomName: this.roomName,
-                sender: this.memberStore.member.nickname, // use the member store here
+                sender: this.memberStore.member.nickname, 
                 message: messageContent,
             };
 
