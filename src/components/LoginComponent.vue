@@ -204,7 +204,7 @@ export default {
             window.localStorage.accessToken = response.data.token;
         },
         clickSide() {
-            document.getElementById("root").addEventListener('click' () => {
+            document.getElementById("root").addEventListener('click', () => {
 
             })
         }

@@ -1,9 +1,9 @@
 <template>
     <router-link to="/login">
-        로그인aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa </router-link
+        로그인 </router-link
     ><br />
     <router-link to="/signup">
-        회원가입aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+        회원가입
     </router-link>
 </template>
 

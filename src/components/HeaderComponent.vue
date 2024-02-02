@@ -13,6 +13,9 @@
                 <li class="header-icon-list">
                     <a href="#" class="header-icon-list-link"> 웹소설 </a>
                 </li>
+                <li class="header-icon-list">
+                    <a href="/chatlist" class="header-icon-list-link"> 채팅 </a>
+                </li>
                 <li class="header-icon-list-search">
                     <div class="header-search">
                         <div class="header-search-bar">
