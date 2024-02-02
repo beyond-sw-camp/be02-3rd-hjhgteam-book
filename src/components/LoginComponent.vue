@@ -217,10 +217,6 @@ export default {
                 sessionStorage.setItem("aToken", response.data.token);
                 window.location.href = "/";
             }
-        },
-        back() {
-            // window.location.href = "/";
-        },
     },
 };
 </script>

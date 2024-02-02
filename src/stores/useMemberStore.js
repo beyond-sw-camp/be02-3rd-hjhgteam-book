@@ -15,7 +15,7 @@ export const useMemberStore = defineStore("member", {
                     sessionStorage.setItem("aToken", response.data.token);
                     let userClaims = VueJwtDecode.decode(response.data.token);
                     this.member.email = userClaims.username;
-                    window.location.replace("http://localhost:8081/");
+                    this.member.nickname = userClaims.nickname;
                 }
             } catch (e) {
                 console.log("로그인 실패");
