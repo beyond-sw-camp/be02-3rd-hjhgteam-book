@@ -61,7 +61,7 @@ export default {
     background-color: rgb(28, 29, 31);
     padding: 20px 0px 38px;
     width: 100%;
-    position: absolute;
+    position: relative;
     bottom: 0;
 }
 

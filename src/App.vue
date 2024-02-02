@@ -1,8 +1,8 @@
 <template>
     <HeaderComponent />
-    <!-- <div class="main"> -->
-    <router-view></router-view>
-    <!-- </div> -->
+    <div class="main">
+        <router-view></router-view>
+    </div>
     <FooterComponent />
 </template>
 
@@ -19,4 +19,9 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.main {
+    /* height: 500px; */
+    text-align: center;
+}
+</style>

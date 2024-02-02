@@ -46,6 +46,11 @@
                         <button class="header-icon-signup-btn">회원가입</button>
                     </router-link>
                 </li>
+                <li class="header-icon-list">
+                    <router-link to="/mypage">
+                        <button class="header-icon-signup-btn">마이페이지</button>
+                    </router-link>
+                </li>
             </ul>
         </div>
     </nav>

@@ -1,25 +1,24 @@
 <template>
     <div class="chatRoom">
         <div class="contents-info" id="content-info">
-            <img :src="logoImg" class="logo-image">
+            <img :src="logoImg" class="logo-image" />
             <h3>{{ roomName }}</h3>
         </div>
 
         <div class="chatting">
             <textarea id="chat-box" cols="30" rows="10">채팅 예절을 지켜주세요!</textarea>
-            <input type="text" id="message">
+            <input type="text" id="message" />
             <button @click="sendMessage" id="send">보내기</button>
         </div>
     </div>
 </template>
-  
+
 <script>
-import axios from 'axios';
-import { useMemberStore } from '../stores/useMemberStore.js';
+import axios from "axios";
+import { useMemberStore } from "../stores/useMemberStore.js";
 
 export default {
-
-    props: ['roomName'],
+    props: ["roomName"],
     setup() {
         const memberStore = useMemberStore();
 
@@ -29,7 +28,8 @@ export default {
     },
     data() {
         return {
-            logoImg: '',
+            logoImg:
+                "https://image-comic.pstatic.net/webtoon/796152/thumbnail/thumbnail_IMAG21_26b9c1d8-ca2d-4fc7-87ea-a3334634236a.jpg", //content db와 연결해서 roomName에 맞는 이미지 가져오는 것으로 수정 필요
             messagesArea: null,
             messageInput: null,
             sendBtn: null,
@@ -53,9 +53,10 @@ export default {
                 const response = await axios.get("http://localhost:8080/chat", {
                     params: { name: this.roomName },
                 });
-                const response1 = await axios.post("http://localhost:8080/content/readByName",
+                const response1 = await axios.post(
+                    "http://localhost:8080/content/readByName",
                     { name: this.roomName },
-                    { headers: { 'Content-Type': 'application/json' } }
+                    { headers: { "Content-Type": "application/json" } }
                 );
 
                 const messages = response.data;
@@ -96,14 +97,14 @@ export default {
                 message: messageContent,
             };
 
-            this.messagesArea.value += '\n'+ chatMessage.sender + ':' + messageContent;
+            this.messagesArea.value += "\n" + chatMessage.sender + ":" + messageContent;
             this.socket.send(JSON.stringify(chatMessage));
             this.messageInput.value = "";
         },
     },
 };
 </script>
-  
+
 <style scoped>
 .chatRoom {
     display: flex;
@@ -114,7 +115,6 @@ export default {
 
 .contents-info {
     margin-right: 10px;
-
 }
 
 .logo-image {
@@ -139,9 +139,7 @@ export default {
 #message {
     width: 300px;
     height: 20px;
-
 }
-
 
 #send {
     position: relative;
@@ -150,4 +148,3 @@ export default {
     height: 26px;
 }
 </style>
-    
