@@ -22,7 +22,7 @@ export default {
 
 <style>
 .main{
-    height: 500px;
+    /* height: 500px; */
     text-align: center;
 }
 </style>
