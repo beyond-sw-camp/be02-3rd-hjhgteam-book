@@ -77,5 +77,4 @@ export default {
 @import "../assets/css/base.css";
 @import "../assets/css/search.css";
 </style>
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped></style>
+

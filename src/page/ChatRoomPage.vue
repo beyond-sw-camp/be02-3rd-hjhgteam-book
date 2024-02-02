@@ -29,7 +29,7 @@ export default {
     },
     data() {
         return {
-            logoImg: "https://image-comic.pstatic.net/webtoon/796152/thumbnail/thumbnail_IMAG21_26b9c1d8-ca2d-4fc7-87ea-a3334634236a.jpg", //content db와 연결해서 roomName에 맞는 이미지 가져오는 것으로 수정 필요
+            logoImg: '',
             messagesArea: null,
             messageInput: null,
             sendBtn: null,
@@ -53,7 +53,17 @@ export default {
                 const response = await axios.get("http://localhost:8080/chat", {
                     params: { name: this.roomName },
                 });
+                const response1 = await axios.post("http://localhost:8080/content/readByName",
+                    { name: this.roomName },
+                    { headers: { 'Content-Type': 'application/json' } }
+                );
+
                 const messages = response.data;
+                const content = response1.data;
+
+                if (content && content.filename) {
+                    this.logoImg = content.filename;
+                }
 
                 messages.forEach((msg) => {
                     this.messagesArea.value += `\n${msg.sender} : ${msg.message}`;
@@ -64,7 +74,7 @@ export default {
             const chatMessage = {
                 type: "ENTER",
                 roomName: this.roomName,
-                sender: this.memberStore.member.nickname, 
+                sender: this.memberStore.member.nickname,
             };
             this.socket.send(JSON.stringify(chatMessage));
         },
@@ -82,11 +92,11 @@ export default {
             const chatMessage = {
                 type: "TEXT",
                 roomName: this.roomName,
-                sender: this.memberStore.member.nickname, 
+                sender: this.memberStore.member.nickname,
                 message: messageContent,
             };
 
-            this.messagesArea.value += `\nuser${this.randomInt} : ${messageContent}`;
+            this.messagesArea.value += '\n'+ chatMessage.sender + ':' + messageContent;
             this.socket.send(JSON.stringify(chatMessage));
             this.messageInput.value = "";
         },

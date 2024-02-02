@@ -56,10 +56,12 @@ export default {
 
 <style scoped>
 .footer {
+    text-align: center;
+
     background-color: rgb(28, 29, 31);
     padding: 20px 0px 38px;
     width: 100%;
-    position: relative;
+    position: absolute;
     bottom: 0;
 }
 
