@@ -350,11 +350,9 @@ export default {
 };
 </script>
 
-<style>
-@import "../assets/css/index.css";
-</style>
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+@import "../assets/css/index.css";
+ 
 #collectCarousel .card {
   /* collectCarousel 속한 .card의 CSS 스타일을 여기에 추가하세요 */
   width: calc(100% / 6);

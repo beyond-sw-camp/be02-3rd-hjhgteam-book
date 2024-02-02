@@ -204,9 +204,9 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 @import "../assets/css/base.css";
 @import "../assets/css/comments.css";
 </style>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped></style>
+ 

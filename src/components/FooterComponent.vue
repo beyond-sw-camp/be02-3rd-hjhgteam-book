@@ -54,7 +54,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .footer {
     background-color: rgb(28, 29, 31);
     padding: 20px 0px 38px;
