@@ -6,16 +6,16 @@
 </template>
 
 <script>
-import MainPage from "./page/MainPage.vue";
 import HeaderComponent from "./components/HeaderComponent.vue";
 import FooterComponent from "./components/FooterComponent.vue";
+import MainPage from "./page/MainPage.vue";
 
 export default {
     name: "App",
     components: {
-        MainPage,
         HeaderComponent,
         FooterComponent,
+        MainPage,
     },
 };
 </script>

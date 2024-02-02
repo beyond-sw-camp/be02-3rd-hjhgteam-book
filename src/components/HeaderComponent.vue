@@ -35,12 +35,12 @@
                 </li>
                 <li class="header-icon-list">
                     <router-link to="/login">
-                        <button class="header-icon-login-btn">로그인</button>
+                        <button id="userLogin" class="header-icon-login-btn">로그인</button>
                     </router-link>
                 </li>
-                <li class="header-icon-list">
+                <li id="userName" class="header-icon-list">
                     <router-link to="/signup">
-                        <button class="header-icon-signup-btn">회원가입</button>
+                        <button id="userSignup" class="header-icon-signup-btn">회원가입</button>
                     </router-link>
                 </li>
             </ul>
@@ -64,7 +64,7 @@ body {
 }
 
 .header {
-    /* min-width: 760px; */
+    min-width: 760px;
     /* margin: 0 3.5%; */
     display: block;
     height: 62px;

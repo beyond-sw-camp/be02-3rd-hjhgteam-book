@@ -37,7 +37,6 @@
                     <li class="footer-left-list4-text">© 2022 by WATCHA, Inc. All rights reserved.</li>
                 </ul>
             </div>
-            <div class="footer-left"></div>
             <div class="footer-right"></div>
         </div>
     </footer>
@@ -59,7 +58,7 @@ export default {
     background-color: rgb(28, 29, 31);
     padding: 20px 0px 38px;
     width: 100%;
-    position: absolute;
+    position: relative;
     bottom: 0;
 }
 
