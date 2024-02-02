@@ -1,7 +1,7 @@
 <template>
     <div id="chatroomBox">
       <div v-for="chatroom in chatroomData" :key="chatroom.roomName" class="chatroomDiv">
-        <router-link to="/chat" class="chatroom">
+        <router-link :to="{ path: '/chat', query: { roomName: chatroom.roomName } }" class="chatroom">
           {{ chatroom.roomName }}
         </router-link>
       </div>

@@ -13,7 +13,11 @@ const router = createRouter({
     { path: "/login", component: LoginComponent },
     { path: "/signup", component: SignupComponent },
     { path: "/chatlist", component: ChatListPage },
-    { path: "/chat", component: ChatRoomPage },
+    {
+      path: "/chat",
+      component: ChatRoomPage,
+      props: (route) => ({ roomName: route.query.roomName }),
+    },
   ],
 });
 
