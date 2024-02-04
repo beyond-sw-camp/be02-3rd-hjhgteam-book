@@ -4,7 +4,9 @@
             <ul class="header-icon">
                 <li class="header-logo">
                     <a href="#" class="header-logo-link">
-                        <img class="header-logo-img" :src="logoImg" alt="" />
+                        <router-link to="/">
+                            <img class="header-logo-img" :src="logoImg" alt="" />
+                        </router-link>
                     </a>
                 </li>
                 <li class="header-icon-list">
@@ -37,36 +39,96 @@
                     </div>
                 </li>
                 <li class="header-icon-list">
-                    <router-link to="/login">
-                        <button class="header-icon-login-btn">로그인</button>
-                    </router-link>
+                    <!-- <router-link to="/login"> -->
+                    <button @click="modalLogin()" id="loginBtn" class="header-icon-login-btn">로그인</button>
+                    <!-- </router-link> -->
                 </li>
                 <li class="header-icon-list">
-                    <router-link to="/signup">
-                        <button class="header-icon-signup-btn">회원가입</button>
-                    </router-link>
+                    <!-- <router-link to="/signup"> -->
+                    <button @click="modalSignup()" id="signupBtn" class="header-icon-signup-btn">회원가입</button>
+                    <!-- </router-link> -->
                 </li>
                 <li class="header-icon-list">
                     <router-link to="/mypage">
-                        <button class="header-icon-signup-btn">마이페이지</button>
+                        <button id="mypageBtn" class="header-icon-signup-btn">
+                            {{ member.email }}
+                        </button>
                     </router-link>
+                </li>
+                <li class="header-icon-list">
+                    <button @click="logout()" id="logoutBtn" class="header-icon-signup-btn">로그아웃</button>
                 </li>
             </ul>
         </div>
     </nav>
 </template>
 <script>
+import { mapStores } from "pinia";
+import { useMemberStore } from "@/stores/useMemberStore";
+import VueJwtDecode from "vue-jwt-decode";
+
 export default {
     name: "HeaderComponent",
     data() {
         return {
+            member: { email: "" },
             logoImg: "https://github.com/Hyeon-Kyun/frontend/assets/96675421/a877995e-6e1c-40e4-acd0-e49fbf08f023", //변경필요
         };
+    },
+    computed: {
+        ...mapStores(useMemberStore),
+    },
+    methods: {
+        modalLogin() {
+            let modalLogin = document.getElementById("modalLogin");
+            modalLogin.style.display = "block";
+        },
+        modalSignup() {
+            let modalLogin = document.getElementById("modalSignup");
+            modalLogin.style.display = "block";
+        },
+        banishLoginNSignupBtn() {
+            let loginBtn = document.getElementById("loginBtn");
+            let signupBtn = document.getElementById("signupBtn");
+            let mypageBtn = document.getElementById("mypageBtn");
+            let logoutBtn = document.getElementById("logoutBtn");
+
+            if (sessionStorage.getItem("aToken") != null) {
+                loginBtn.style.display = "none";
+                signupBtn.style.display = "none";
+                mypageBtn.style.display = "inline-block";
+                logoutBtn.style.display = "inline-block";
+            } else {
+                loginBtn.style.display = "inline-block";
+                signupBtn.style.display = "inline-block";
+                mypageBtn.style.display = "none";
+                logoutBtn.style.display = "none";
+                // window.location.replace("/");
+            }
+        },
+        logout() {
+            sessionStorage.removeItem("aToken");
+            window.location.href = "/";
+        },
+    },
+    mounted() {
+        this.banishLoginNSignupBtn();
+        if (sessionStorage.getItem("aToken") != null) {
+            this.member.email = VueJwtDecode.decode(sessionStorage.getItem("aToken")).username;
+        }
     },
 };
 </script>
 
 <style scoped>
+#mypageBtn {
+    display: none;
+}
+
+#logoutBtn {
+    display: none;
+}
+
 body {
     text-align: center;
     margin: 0px 0px 0px 0px;

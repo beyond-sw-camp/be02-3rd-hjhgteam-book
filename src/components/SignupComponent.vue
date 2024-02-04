@@ -3,6 +3,7 @@
         <div id="app" class="signup">
             <div class="signup-box">
                 <header class="signup-box-header">
+                    <span @click="modalClose()" id="modalClose">X</span>
                     <span
                         height="38.03px"
                         src="https://github.com/Hyeon-Kyun/frontend/assets/96675421/a877995e-6e1c-40e4-acd0-e49fbf08f023"
@@ -138,11 +139,9 @@
                             </form>
                             <div class="signup-box-main-login">
                                 이미 가입하셨나요?
-                                <router-link to="/login">
-                                    <button onclick="location.href='/login'" class="signup-box-main-login-button">
-                                        로그인
-                                    </button>
-                                </router-link>
+                                <!-- <router-link to="/login"> -->
+                                <button @click="modalLogin()" class="signup-box-main-login-button">로그인</button>
+                                <!-- </router-link> -->
                             </div>
                             <hr class="signup-box-main-divide" />
                             <ul class="signup-box-main-socialsignup">
@@ -209,26 +208,40 @@ export default {
     },
     computed: {
         ...mapStores(useMemberStore),
-        // const memberStore = useMemberStore();
     },
     methods: {
         async signup() {
-            // let email = document.getElementById("emailText").value;
-            // let password1 = document.getElementById("passwordText1").value;
-            // let password2 = document.getElementById("passwordText2").value;
-
-            // let formData = new FormData();
-
-            // formData.append("email", email);
-
-            if (this.member.password1 == this.member.password2) {
-                // formData.append("password", password1);
-                let response = await axios.post("http://localhost:8080/member/signup", this.member);
-                if (response.status === 200) {
-                    window.location.href = "/login";
+            if (
+                this.member.password1 == this.member.password2 &&
+                this.member.password1 != null &&
+                this.member.password2 != null
+            ) {
+                try {
+                    let response = await axios.post("http://localhost:8080/member/signup", this.member);
+                    if (response.status === 200) {
+                        window.location.href = "/login";
+                    } else {
+                        alert("회원가입 실패");
+                    }
+                } catch (e) {
+                    alert("잘못된 회원가입 방식");
                 }
             } else {
-                alert("wrong password!");
+                alert("잘못된 비밀번호 입력입니다");
+            }
+        },
+        modalLogin() {
+            let modalLogin = document.getElementById("modalLogin");
+            let modalSignup = document.getElementById("modalSignup");
+            if (modalSignup.style.display == "block") {
+                modalSignup.style.display = "none";
+            }
+            modalLogin.style.display = "block";
+        },
+        modalClose() {
+            let modalSignup = document.getElementById("modalSignup");
+            if (modalSignup.style.display == "block") {
+                modalSignup.style.display = "none";
             }
         },
     },
@@ -236,6 +249,12 @@ export default {
 </script>
 
 <style scoped>
+#modalClose {
+    position: fixed;
+    left: 15px;
+    text-decoration: solid;
+}
+
 #root {
     display: block;
     position: fixed;

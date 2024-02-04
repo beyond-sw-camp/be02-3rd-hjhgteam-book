@@ -2,84 +2,90 @@
     <!-- 마이페이지 → 정보수정 모달 컴포넌트 -->
     <!DOCTYPE html>
     <html lang="ko">
+        <head>
+            <meta charset="UTF-8" />
+            <title>내 정보 수정하기</title>
+        </head>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+            integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
 
-    <head>
-        <meta charset="UTF-8">
-        <title>내 정보 수정하기</title>
-    </head>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-
-    <body>
-        <div class="modal_div" id="modal">
-            <div class="modal_back">
-                <div class="modal_menu">
-                    <header class="modal_header">
-                        <div class="modal_exit">
-                            <div>
-                                <RouterLink to='/mypage'>
-                                    <button class="closeBtn"><i class="fa-solid fa-xmark"></i></button>
-                                </RouterLink>
+        <body>
+            <div class="modal_div" id="modal">
+                <div class="modal_back">
+                    <div class="modal_menu">
+                        <header class="modal_header">
+                            <div class="modal_exit">
+                                <div>
+                                    <router-link to="/mypage">
+                                        <button class="closeBtn"><i class="fa-solid fa-xmark"></i></button>
+                                    </router-link>
+                                </div>
+                                <div></div>
                             </div>
-                            <div></div>
-                        </div>
-                        <div class="setting">
-                            <div class="setting_title">설정</div>
-                        </div>
-                        <div class="modal_top">설정</div>
-                    </header>
-                    <div class="setting_list">
-                        <div class="setting_list2">
-                            <div class="setting_list3">
-                                <section class="my_setting">
-                                    <div class="name_setting">프로필 사진</div>
-                                    <div>
-                                        <form id="myform" method="patch" enctype="multipart/form-data">
-                                            <input type="file" name="imageFile" onchange="readURL(this)"
-                                                style="color: white" id="imageFile" />
-                                        </form>
-                                        <img id="preview" class="imgpreview" />
-                                    </div>
-                                    <ul></ul>
-                                    <div class="name_setting">이메일</div>
-                                    <div>
-                                        <form>
-                                            <input class="input_name" type="text" name="email" id="email"
-                                                value="guswn2801@gmail.com" readonly />
-                                        </form>
-                                    </div>
-                                    <div class="name_setting">닉네임</div>
-                                    <div>
-                                        <form>
-                                            <input class="input_name" type="text" name="nickname" id="nickname" />
-                                        </form>
-                                    </div>
-                                    <ul></ul>
+                            <div class="setting">
+                                <div class="setting_title">설정</div>
+                            </div>
+                            <div class="modal_top">설정</div>
+                        </header>
+                        <div class="setting_list">
+                            <div class="setting_list2">
+                                <div class="setting_list3">
+                                    <section class="my_setting">
+                                        <div class="name_setting">프로필 사진</div>
+                                        <div>
+                                            <form id="myform" method="patch" enctype="multipart/form-data">
+                                                <input
+                                                    type="file"
+                                                    name="imageFile"
+                                                    onchange="readURL(this)"
+                                                    style="color: white"
+                                                    id="imageFile"
+                                                />
+                                            </form>
+                                            <img id="preview" class="imgpreview" />
+                                        </div>
+                                        <ul></ul>
+                                        <div class="name_setting">이메일</div>
+                                        <div>
+                                            <form>
+                                                <input
+                                                    class="input_name"
+                                                    type="text"
+                                                    name="email"
+                                                    id="email"
+                                                    value="guswn2801@gmail.com"
+                                                    readonly
+                                                />
+                                            </form>
+                                        </div>
+                                        <div class="name_setting">닉네임</div>
+                                        <div>
+                                            <form>
+                                                <input class="input_name" type="text" name="nickname" id="nickname" />
+                                            </form>
+                                        </div>
+                                        <ul></ul>
 
-                                    <div>
-                                        <button id="updateBtn" class="saveBtn">저장</button>
-                                    </div>
-                                </section>
+                                        <div>
+                                            <button id="updateBtn" class="saveBtn">저장</button>
+                                        </div>
+                                    </section>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-    </body>
-
+        </body>
     </html>
 </template>
 
-<script>
-
-</script>
+<script></script>
 
 <style scoped>
 /* 모달 CSS */
@@ -88,11 +94,9 @@ a {
     color: black;
 }
 
-
 li {
     list-style: none;
 }
-
 
 .modal_top {
     position: absolute;
@@ -182,7 +186,6 @@ li {
     text-align: left;
 }
 
-
 .exit_btn {
     background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9IiNGRjJGNkUiIGZpbGwtcnVsZT0iZXZlbm9kZCIgdHJhbnNmb3JtPSJyb3RhdGUoNDUgMTIgMTIpIj4KICAgICAgICA8cmVjdCB3aWR0aD0iMiIgaGVpZ2h0PSIxOCIgeD0iMTEiIHk9IjMiIHJ4PSIxIi8+CiAgICAgICAgPHJlY3Qgd2lkdGg9IjE4IiBoZWlnaHQ9IjIiIHg9IjMiIHk9IjExIiByeD0iMSIvPgogICAgPC9nPgo8L3N2Zz4K);
     padding: 0px;
@@ -262,7 +265,6 @@ li {
     line-height: 19px;
     padding: 5px 0px;
     box-sizing: border-box;
-
 }
 
 .input_name {
@@ -270,7 +272,6 @@ li {
     padding-bottom: 10px;
     border-bottom: solid rgb(227, 227, 227) 1px;
     width: 100%;
-
 }
 
 input {
@@ -288,18 +289,17 @@ input {
     background-color: rgba(0, 0, 0, 0.4);
 }
 
-.closeBtn{
+.closeBtn {
     background-color: white;
     border: none;
     size: 20px;
     margin-top: 20px;
 }
 
-.closeBtn:hover{
+.closeBtn:hover {
     color: gray;
     cursor: pointer;
 }
-
 
 /* 저장 버튼 */
 .saveBtn {
@@ -310,7 +310,7 @@ input {
 }
 
 .saveBtn:hover {
-    background-color: lightgrey
+    background-color: lightgrey;
 }
 
 .imgpreview {

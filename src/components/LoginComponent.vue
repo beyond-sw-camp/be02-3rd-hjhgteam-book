@@ -3,6 +3,7 @@
         <div id="app" class="login">
             <div class="login-box">
                 <header class="login-box-header">
+                    <span @click="modalClose()" id="modalClose">X</span>
                     <span
                         height="38.03px"
                         src="https://github.com/Hyeon-Kyun/frontend/assets/96675421/a877995e-6e1c-40e4-acd0-e49fbf08f023"
@@ -124,7 +125,7 @@
                   </p> -->
                                 </div>
                                 <button
-                                    @click="memberStore.login(member.email, member.password)"
+                                    @click="memberStore.login(memberStore.email, memberStore.password)"
                                     id="loginBtn"
                                     type="submit"
                                     class="login-box-form-button"
@@ -137,9 +138,9 @@
                             </div>
                             <div class="login-box-signup">
                                 계정이 없으신가요?
-                                <router-link to="/signup"
-                                    ><button class="login-box-signup-button">회원가입</button>
-                                </router-link>
+                                <!-- <router-link to="/signup"> -->
+                                <button @click="modalSignup()" class="login-box-signup-button">회원가입</button>
+                                <!-- </router-link> -->
                             </div>
                             <hr class="login-box-divide" />
                             <ul class="login-box-sociallogin">
@@ -195,27 +196,49 @@
 
 <script>
 import axios from "axios";
-// import { computed } from 'vue';
 import { mapStores } from "pinia";
 import { useMemberStore } from "@/stores/useMemberStore";
+import VueJwtDecode from "vue-jwt-decode";
 
 export default {
     name: "LoginComponent",
     data() {
         return {
-            member: { email: "", password: "" },
+            member: { email: "", password: "", nickname: "" },
         };
     },
     computed: {
         ...mapStores(useMemberStore),
-        // const memberStore = useMemberStore();
     },
     methods: {
         async login() {
-            let response = await axios.post("http://localhost:8080/member/login", this.member);
-            if (response.status === 200 && response.data.token != null) {
-                sessionStorage.setItem("aToken", response.data.token);
-                window.location.href = "/";
+            try {
+                let response = await axios.post("http://localhost:8080/member/login", this.member);
+                if (response.status === 200 && response.data.token != null) {
+                    sessionStorage.setItem("aToken", response.data.token);
+                    let userClaims = VueJwtDecode.decode(response.data.token);
+                    this.member.email = userClaims.username;
+                    this.member.nickname = userClaims.nickname;
+                    window.location.href = "/";
+                } else {
+                    alert("로그인 실패");
+                }
+            } catch (e) {
+                alert("잘못된 로그인 방식");
+            }
+        },
+        modalSignup() {
+            let modalSignup = document.getElementById("modalSignup");
+            let modalLogin = document.getElementById("modalLogin");
+            if (modalLogin.style.display == "block") {
+                modalLogin.style.display = "none";
+            }
+            modalSignup.style.display = "block";
+        },
+        modalClose() {
+            let modalLogin = document.getElementById("modalLogin");
+            if (modalLogin.style.display == "block") {
+                modalLogin.style.display = "none";
             }
         },
     },
@@ -223,6 +246,12 @@ export default {
 </script>
 
 <style scoped>
+#modalClose {
+    position: fixed;
+    left: 15px;
+    text-decoration: solid;
+}
+
 #root {
     display: block;
     position: fixed;
