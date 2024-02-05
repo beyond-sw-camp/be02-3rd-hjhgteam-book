@@ -1,16 +1,16 @@
 <template>
   <div class="modal_div modal-dialog modal-dialog-centered">
-    <div class="modal-content w-100 p-3">
+    <div class="modal-content w-60 p-3">
       <!-- 코멘트 타이틀 -->
       <div class="d-flex align-items-center justify-content-between mb-3">
-        <h6 class="m-0"><b>제목 1번</b></h6>
+        <h6 class="m-0"><b>{{axiosContent.name}}</b></h6>
         <router-link :to="`/detail/${id}`">
           <button type="button" class="btn-close"></button>
         </router-link>
       </div>
       <!-- 코멘트 입력부분 -->
       <form
-        action="{% url 'posts:comment_create' detail.id %}?movie_title={{ detail.title }}"
+        action=""
         method="POST"
         class="d-flex flex-column log-input w-100 gap-2"
       >
@@ -48,20 +48,43 @@
 </template>
 
 <script>
+import axios from "axios";
+
+// const backend = 'https://www.lonuashop.kro.kr/api';
+const backend = "http://3.34.199.45:8080";
+
 export default {
+  name: "CommentModal",
   props: {},
   data() {
     return {
       id: null,
       ratingC: 0,
+      axiosContent: {},
+      commentReq: {
+        comment: "",
+        contentId: "",
+        rate: "",
+      },
     };
   },
   mounted() {
     // $route.params.id를 통해 id 값을 가져옴
     this.id = this.$route.params.id; 
     console.log("id:", this.id);
+    this.getContent(this.id);
   },
-  methods: {},
+  methods: {
+    async getContent(id) {
+      try {
+        let response = await axios.get(backend + `/content/${id}`);
+        console.log(response.data);
+        this.axiosContent = response.data;
+      } catch (error) {
+        console.error(error);
+      }
+    },
+  },
   computed: {
     starWidth() {
       return `${this.ratingC * 10}%`;
@@ -74,6 +97,7 @@ export default {
 .modal_div {
   display: block;
   position: fixed;
+  
   inset: 0px;
   z-index: 100;
   background: rgba(0, 0, 0, 0.56);
@@ -84,5 +108,9 @@ export default {
 
 .modal-content{
     top:25%;
+    width: 60%;
+    margin: auto;
+    background-color: papayawhip;
+    border-radius: 30px;
 }
 </style>

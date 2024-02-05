@@ -1,5 +1,4 @@
 <template>
-    
   <section class="detail-movie_info border-bottom">
     <!-- 영화 이미지 배너 -->
     <div class="detail-banner_wrapper">
@@ -12,18 +11,17 @@
         <img id="filename" src=" " alt="" />
       </div>
       <div class="d-flex flex-column">
-     
-        <h1 id="name" class="mt-5"><b>웡카 </b></h1>
+        <h1 id="name" class="mt-5"><b>{{axiosContent.name}} </b></h1>
         <span id="categoryId" class="mb-2 text-secondary font-15"
           >날짜・ 장르1개</span
         >
+        <!-- 장르 이름 backend수정중 -->
         <div class="mb-1 py-2 d-flex border-top border-bottom font-15">
-          <span class="color-pink">예상평점 ★2</span>
+          <span class="color-pink">예상평점 ★3</span>
         </div>
         <div class="d-flex gap-4">
           <div class="d-flex flex-column align-items-center">
             <!--  <span class="text-secondary font-12">평가하기</span> -->
- 
           </div>
         </div>
 
@@ -42,7 +40,7 @@
             </button>
           </form>
 
-          <router-link :to="`/detail/${id}/comment`"> 
+          <router-link :to="`/detail/${id}/comment`">
             <a
               type="button"
               id="open_modal"
@@ -133,65 +131,83 @@
         <div>
           <div class="d-flex justify-content-between mb-3">
             <h2 class="d-flex gap-2">
-              <b>코멘트</b><span class="color-pink">100+</span>
+              <b>코멘트</b
+              ><span class="color-pink">{{ contentCommentList.length }}</span>
             </h2>
             <!-- {% if comments %} -->
-            <a href="{% url 'posts:comments' detail.id %}" class="color-pink"
-              >더보기</a
-            >
+            <a :href="`/detail/${id}/comments`" class="color-pink">더보기</a>
             <!-- {% endif %} -->
           </div>
 
           <!-- todo  flex? grid? 로 딱 3 개 맞추기 -->
 
           <ul class="card-wrapper gap-3">
-            <!-- {% endif %} -->
-            <li class="comment-card">
-              <div
-                class="d-flex justify-content-between align-items-center border-bottom mb-3"
-              >
-                <a href=" " class="d-flex align-items-center gap-2 py-2">
-                  <div class="profile-image-form">
-                    <img src="../assets/logo.png" alt="" />
+            <!-- :class="{ active: index === 0 }" -->
+            <!-- 3개 기본값 if 없으면ㄴㄴ  -->
+            <!-- proxy in proxy배열 -->
+
+            <li
+              v-for="(comment, index) in contentCommentList"
+              :key="index"
+              class="comment-card"
+            >
+              <div v-if="contentCommentList.length < 3">
+                <div v-if="contentCommentList.length - index < 1"></div>
+              </div>
+
+              <div v-if="index <= 2">
+                <div
+                  class="d-flex justify-content-between align-items-center border-bottom mb-3"
+                >
+                  <a href=" " class="d-flex align-items-center gap-2 py-2">
+                    <div class="profile-image-form">
+                      <img :src="comment.member['image']" alt="" />
+                    </div>
+                    <div>
+                      <b>{{ comment.member["nickname"] }}</b>
+                    </div>
+                  </a>
+                  <div class="comment-score font-14">★{{ comment.rate }}</div>
+                </div>
+                <a href=" ">
+                  <div class="comment-content border-bottom">
+                    {{ comment.comment }}
                   </div>
-                  <div><b>이름</b></div>
                 </a>
-                <div class="comment-score font-14">★4.5</div>
-              </div>
-              <a href=" ">
-                <div class="comment-content border-bottom">댓글내용</div>
-              </a>
-              <div class="d-flex align-items-center gap-3 border-bottom mb-2">
-                <div class="d-flex align-items-center gap-2 py-2">
-                  <span class="material-symbols-outlined text-secondary font-15"
-                    >thumb_up</span
-                  >
-                  <div
-                    class="font-14"
-                    id="like-count-{{ detail.id }}-{{ comment.id }}"
-                  >
-                    좋아요수
+                <div class="d-flex align-items-center gap-3 border-bottom mb-2">
+                  <div class="d-flex align-items-center gap-2 py-2">
+                    <span
+                      class="material-symbols-outlined text-secondary font-15"
+                      >thumb_up</span
+                    >
+                    <div
+                      class="font-14"
+                      id="like-count-{{ detail.id }}-{{ comment.id }}"
+                    >
+                      좋아요수
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-center gap-2">
+                    <span
+                      class="material-symbols-outlined text-secondary font-15"
+                      >chat_bubble</span
+                    >
+                    <div class="font-14">댓글수</div>
                   </div>
                 </div>
-                <div class="d-flex align-items-center gap-2">
-                  <span class="material-symbols-outlined text-secondary font-15"
-                    >chat_bubble</span
-                  >
-                  <div class="font-14">댓글수</div>
-                </div>
+                <form
+                  class="comment-like-forms"
+                  data-detail-id="{{ detail.id }}"
+                  data-comment-id="{{ comment.id }}"
+                >
+                  <input
+                    type="submit"
+                    id="like-{{ detail.id }}-{{ comment.id }}"
+                    class="comment-unlike_btn"
+                    value="좋아요"
+                  />
+                </form>
               </div>
-              <form
-                class="comment-like-forms"
-                data-detail-id="{{ detail.id }}"
-                data-comment-id="{{ comment.id }}"
-              >
-                <input
-                  type="submit"
-                  id="like-{{ detail.id }}-{{ comment.id }}"
-                  class="comment-unlike_btn"
-                  value="좋아요"
-                />
-              </form>
             </li>
           </ul>
         </div>
@@ -202,7 +218,6 @@
 </template>
 
 <script>
-
 import axios from "axios";
 
 // const backend = 'https://www.lonuashop.kro.kr/api';
@@ -210,52 +225,77 @@ const backend = "http://3.34.199.45:8080";
 
 export default {
   name: "DetailPage",
-  components: {}, 
+  components: {},
   data() {
     return {
-        id: null, 
-        axiosContent:{}, 
-        axiosComment:[],
+      id: null,
+      axiosContent: {},
+      axiosAllComment: [],
     };
   },
-  methods:{
-    async getContent(id){
-      try{
-        let response = await axios.get(backend+`/content/${id}`);
+  created() {},
+  methods: {
+    async getContent(id) {
+      try {
+        let response = await axios.get(backend + `/content/${id}`);
         console.log(response.data);
+        console.log(777);
         this.axiosContent = response.data;
         
-      }catch(error){
+        console.log(this.axiosContent);
+      } catch (error) {
         console.error(error);
-
       }
     },
 
-    async getAllComment(page, size) { 
-            try {
-            let response = await axios.get(backend+ `/comment/list?page=${page}&size=${size}`);
-      
-            console.log(response.data);
-            this.axiosComment = response.data;
-        } catch (error) {
+    async getAllComment(page, size) {
+      try {
+        let response = await axios.get(
+          backend + `/comment/list?page=${page}&size=${size}`
+        );
+        console.log(response.data);
+        this.axiosAllComment = response.data;
+      } catch (error) {
         console.error(error);
-      }}
+      }
+    },
   },
 
   mounted() {
     // $route.params.id를 통해 id 값을 가져옴
     this.id = this.$route.params.id;
-    console.log('ID:', this.id);
-    this.getContent(this.id); 
-    this.getAllComment(1,100);
-    
-  }, 
-  created() { 
-    },
-  computed: {
- 
+    console.log("ID:", this.id);
+    this.getContent(this.id);
+    this.getAllComment(1, 100); //임의로 100
+    this.ConComment = this.contentCommentList;
   },
-  
+
+  computed: {
+    contentCommentList() {
+      const res = [];
+      for (let i = 0; i < this.axiosAllComment.length; i++) {
+        if (this.id == this.axiosAllComment[i].contentId) {
+          res.push(this.axiosAllComment[i]);
+        }
+      }
+      console.log(res);
+      // 위 아래 합치면 될꺼같은데 안됨 이유 모름
+      const response = [];
+      for (let i = 0; i < res.length; i++) {
+        const myObject = {};
+        for (const a in res[i]) {
+          myObject[a] = res[i][a];
+          console.log(a);
+          console.log(res[i][a]);
+        }
+        console.log(myObject);
+        response.push(myObject);
+      }
+      console.log(response);
+
+      return response;
+    },
+  },
 };
 </script>
 

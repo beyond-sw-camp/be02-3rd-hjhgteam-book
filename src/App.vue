@@ -20,16 +20,17 @@ import HeaderComponent from "./components/HeaderComponent.vue";
 import FooterComponent from "./components/FooterComponent.vue";
 import LoginComponent from "./components/LoginComponent.vue";
 import SignupComponent from "./components/SignupComponent.vue";
+ 
 
 export default {
     name: "App",
     methods: {},
     components: {
-        HeaderComponent,
-        LoginComponent,
-        SignupComponent,
-        FooterComponent,
-    },
+    HeaderComponent,
+    LoginComponent,
+    SignupComponent,
+    FooterComponent,
+},
 };
 </script>
 
