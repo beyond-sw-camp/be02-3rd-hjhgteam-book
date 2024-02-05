@@ -12,39 +12,37 @@
 
     <body>
         <!-- <section class="follow_section"> -->
-            <div class="back">
-                <div class="follow_box">
-                    <section class="section2">
-                        <div class="section2_div1">
-                            <div>
-                                <div class="follow"></div>
-                                <ul class="comment_title">
-                                    <li style="font-weight: 700; font-size: 20px; padding-right: 10px;">코멘트/평가</li>
-                                </ul>
-                            </div>
-                            <ul class="tab">
-                                <router-link to="/mycomment/webtoon">
-                                    <li class="tab_item active">
-                                        웹툰
-                                    </li>
-                                </router-link>
-                                <li class="tab_item">
-                                    <a href="#tab2">웹소설</a>
-                                </li>
+        <div class="back">
+            <div class="follow_box">
+                <section class="section2">
+                    <div class="section2_div1">
+                        <div>
+                            <div class="follow"></div>
+                            <ul class="comment_title">
+                                <li style="font-weight: 700; font-size: 20px; padding-right: 10px;">코멘트/평가</li>
                             </ul>
-                            <div>
-                                <div id="tab1" class="contentList">
-                                    <div class="content_div">
-                                        <ul class="content_ul">
-                                            <webtoonComment></webtoonComment>
-                                        </ul>
-                                    </div>
+                        </div>
+                        <ul class="tab">
+                            <li class="tab_item active">
+                                웹툰
+                            </li>
+                            <li class="tab_item">
+                                <a href="#tab2">웹소설</a>
+                            </li>
+                        </ul>
+                        <div>
+                            <div id="tab1" class="contentList">
+                                <div class="content_div">
+                                    <ul class="content_ul">
+                                        <WebtoonComment></WebtoonComment>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
-                    </section>
-                </div>
+                    </div>
+                </section>
             </div>
+        </div>
         <!-- </section> -->
 
     </body>
@@ -53,32 +51,37 @@
 </template>
 
 <script>
-import webtoonComment from "../components/WebtoonComponent.vue"
+import WebtoonComment from "../components/WebtoonComponent.vue"
 
 export default {
     components: {
-        webtoonComment
+        WebtoonComment
     }
 }
 </script>
 
 <style scoped>
-.contentList{
+.contentList {
     margin-top: 40px;
+    align-items: center;
+    margin-left: 20px;
 }
+
 a {
     text-decoration: none;
     color: inherit;
     font-size: 13px;
 }
-li{
+
+li {
     list-style-type: none;
 }
 
 .tab {
     display: flex;
     align-items: center;
-    padding-right: 40px;
+    /* padding-right: 40px; */
+    margin-left: 50px;
 }
 
 .tab_item {
@@ -93,6 +96,7 @@ li{
     border: 1px solid #ddd;
     /* background-color: #b81c0f; */
     background-color: lightgrey;
+    font-size: 15px;
     color: #fff;
 }
 
@@ -164,5 +168,15 @@ li{
     margin-block: 0px;
     margin-inline: 0px;
     padding-inline-start: 0px;
+}
+
+.comment_title {
+    font-size: 14px;
+    font-weight: 500;
+    padding-left: 40px;
+    padding-bottom: 20px;
+    color: black;
+    display: flex;
+    border-bottom: rgb(248, 248, 248) solid 1px;
 }
 </style>

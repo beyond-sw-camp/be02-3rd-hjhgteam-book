@@ -15,7 +15,11 @@
                 <section>
                     <div>
                         <div class="signup-box-main">
-                            <form @submit.prevent="signup()" method="post" action="http://localhost:8080/member/signup">
+                            <form
+                                @submit.prevent="signup()"
+                                method="post"
+                                action="http://www.bookspedia.kro.kr/api/member/signup"
+                            >
                                 <div class="signup-box-main-email">
                                     <label value="false" class="signup-box-main-email-label">
                                         <div class="signup-box-main-email-label-text">
@@ -130,7 +134,7 @@
                                     ></span>
                                 </button>
                                 <button
-                                    @click="memberStore.signup(member.email, member.password1, member.password2)"
+                                    @click="signup(member.email, member.password, member.password2)"
                                     id="signupBtn"
                                     class="signup-box-main-submit"
                                 >
@@ -212,14 +216,14 @@ export default {
     methods: {
         async signup() {
             if (
-                this.member.password1 == this.member.password2 &&
-                this.member.password1 != null &&
+                this.member.password == this.member.password2 &&
+                this.member.password != null &&
                 this.member.password2 != null
             ) {
                 try {
-                    let response = await axios.post("www.bookipedia.kro.kr/api/member/signup", this.member);
+                    let response = await axios.post("http://www.bookspedia.kro.kr/api/member/signup", this.member);
                     if (response.status === 200) {
-                        window.location.href = "/login";
+                        window.location.href = "/";
                     } else {
                         alert("회원가입 실패");
                     }

@@ -1,96 +1,101 @@
 <template>
-    <!DOCTYPE html>
-    <html lang="ko">
-
-    <head>
-        <meta charset="UTF-8" />
-        <title>Document</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-            integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-            crossorigin="anonymous" referrerpolicy="no-referrer" />
-    </head>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> -->
-
-    <body>
-
-        <!-- <section class="mypage_section"> -->
-            <div class="back">
-                <div class="mypage_box">
-                    <section class="section2">
-                        <div class="section2_div1">
-                            <div>
-                                <div class="user_setting"></div>
-                                <ul class="account">
-                                    <li style="
+    <!-- <section class="mypage_section"> -->
+        <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <div class="back">
+        <div class="mypage_box">
+            <section class="section2">
+                <div class="section2_div1">
+                    <div>
+                        <div class="user_setting"></div>
+                        <ul class="account">
+                            <li style="
                                         font-weight: 700;
                                         font-size: 20px;
                                         padding-right: 10px;
                                         ">
-                                    닉네임  </li> 
-                                    
-                                    <li style="color: gray; margin-top: 6px">
-                                        이메일
-                                    </li>
+                                {{member.nickname}} </li>
 
-                                </ul>
-                                <RouterLink to = '/mypage/setting'>
-                                <button class="user_btn" id="open_modal" >
-                                    <i class="fa-solid fa-gear setting_hover"></i>
-                                </button>
-                            </RouterLink>                           
-                            </div>
-                            <div class="user_info">
-                                <div>
-                                    <ul>
-                                        <li style="list-style: none">
-                                            <div class="user_photo">
-                                                <div class="user_photo2"><img src /></div>
-                                            </div>
-                                        </li>
-                                        <li class="user_add">
-                                            <a href="/follower" class="follow">10<br />팔로우</a>
-                                        </li>
-                                        <li class="user_add">
-                                            <a href="/following" class="follow">10<br />팔로잉</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="myComentList">
-                                    <a href="/mycomment" class="myComentList2">
-                                        <span class="myComentList_span">0</span>
-                                        <span class="myComentList_span">코멘트/평가</span>
-                                    </a>
-                                    <div class="line"></div>
-                                    <a href="/collection" class="myComentList2">
-                                        <span class="myComentList_span">0</span>
-                                        <span class="myComentList_span">컬렉션</span>
-                                    </a>
-                                </div>
-                            </div>
+                            <li style="color: gray; margin-top: 6px">
+                                {{ member.email }}
+                            </li>
+
+                        </ul>
+                        <RouterLink to='/mypage/setting'>
+                            <button class="user_btn" id="open_modal">
+                                <i class="fa-solid fa-gear setting_hover"></i>
+                            </button>
+                        </RouterLink>
+                    </div>
+                    <div class="user_info">
+                        <div>
+                            <ul>
+                                <li style="list-style: none">
+                                    <div class="user_photo">
+                                        <div class="user_photo2"></div>
+                                    </div>
+                                </li>
+                                <li class="user_add">
+                                    <a href="/follower" class="follow">0<br />팔로우</a>
+                                </li>
+                                <li class="user_add">
+                                    <a href="/following" class="follow">1<br />팔로잉</a>
+                                </li>
+                            </ul>
                         </div>
-                    </section>
+                        <div class="myComentList">
+                            <a href="/mycomment" class="myComentList2">
+                                <span class="myComentList_span">1</span>
+                                <span class="myComentList_span">코멘트/평가</span>
+                            </a>
+                            <div class="line"></div>
+                            <!-- <router-link :to="'/collection'"> -->
+                            <a href="/collection" class="myComentList2">
+                                <!-- <a class="myComentList2"> -->
+                                <span class="myComentList_span">4</span>
+                                <span class="myComentList_span">컬렉션</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        <!-- </section> -->
-        <router-view></router-view>
-    </body>
-
-    </html>
+            </section>
+        </div>
+    </div>
+    <router-view></router-view>
 </template>
 
 <script>
-// import { useMemberStore } from '../stores/useCollectionStore'
-// import { mapStores } from 'pinia'
+import { useMemberStore } from '@/stores/useMemberStore';
+import { useCollectionStore } from '@/stores/useCollectionStore';
+import { mapStores } from 'pinia'
+import VueJwtDecode from "vue-jwt-decode";
 
+export default {
+    data(){
+        return {
+            member: {email: "", nickname: "", image: ""}
+        }
+    },
+    computed: {
+        ...mapStores(useMemberStore, useCollectionStore)
+    },
 
-// export default {
-//     data() {
-    
-//     },
-//     computed: {
-//         ...mapStores(useMemberStore)
-//     },
-// }
+    components: {
+    },
+
+    mounted() {
+        this.member.email = VueJwtDecode.decode(sessionStorage.getItem("aToken")).username;
+        this.member.nickname = VueJwtDecode.decode(sessionStorage.getItem("aToken")).nickname;
+        this.member.image = VueJwtDecode.decode(sessionStorage.getItem("aToken")).image;
+
+    }
+}
+
 </script>
 
 
@@ -187,6 +192,7 @@ li {
 }
 
 .user_photo {
+    
     padding-top: 135px;
     width: 135px;
     display: flex;
@@ -202,7 +208,7 @@ li {
     z-index: 1;
     display: block;
     position: absolute;
-    background: url("#") center center / cover no-repeat;
+    background: url("https://practice-2023.s3.ap-northeast-2.amazonaws.com/2024/02/04/ff4795f5-6b94-42b1-a705-184cac7c5e86_img.jpeg") center center / cover no-repeat;
 }
 
 .user_add {

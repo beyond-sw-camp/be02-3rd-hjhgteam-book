@@ -12,9 +12,6 @@
                     <div class="info_name1">
                         <div class="info_name2">{{ follower }}</div>
                     </div>
-                    <div class="follow_name3">
-                        <div class="follow_name4">베스트 코멘트와 콜렉션을 소개해드려요.</div>
-                    </div>
                 </div>
             </div>
         </a>
@@ -28,18 +25,19 @@ import axios from 'axios';
 export default {
 
 data() {
-    return { followerList: [] }
+    return { followerList: [], followercount: "" }
 },
 
 methods: {
     async getFollowerList() {
 
         try {
-            // let aToken = sessionStorage.getItem("")
-            let response = await axios.get("http://54.180.123.100:8888/follow/list/followers",
+            const backend = "http://www.bookspedia.kro.kr/api";
+            let aToken = sessionStorage.getItem("aToken");
+            let response = await axios.get( backend +"/follow/list/followers",
                 {
                     headers: {
-                        Authorization: "Bearer " + "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Imd1c3duMjgwMUBnbWFpbC5jb20iLCJpZCI6MTUsImlhdCI6MTcwNjg0OTc4MiwiZXhwIjoxMDI0MTA5ODcxMjczMDAwfQ.0QldCc7GoXU57C9kQivO-9Ni3sBeveIgNs3DgtIuYf0"
+                        Authorization: "Bearer " + aToken
                     }
                 });
             this.followerList = response.data;
@@ -123,7 +121,7 @@ mounted() {
     box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 0px 1px inset;
     position: relative;
     z-index: 1;
-    background: url() center center / cover no-repeat;
+    background: url(https://practice-2023.s3.ap-northeast-2.amazonaws.com/2024/02/%EA%B8%B0%EB%B3%B8%EC%9D%B4%EB%AF%B8%EC%A7%80.png) center center / cover no-repeat;
     width: 100%;
     height: 100%;
 }

@@ -1,8 +1,8 @@
 import { defineStore } from "pinia";
 import axios from "axios";
-// import VueJwtDecode from "vue-jwt-decode";
+import VueJwtDecode from "vue-jwt-decode";
 
-const backend = "www.bookipedia.kro.kr/api";
+const backend = "http://www.bookspedia.kro.kr/api";
 
 export const useMemberStore = defineStore("member", {
     state: () => ({ member: { email: "", nickname: "" } }),
@@ -13,9 +13,9 @@ export const useMemberStore = defineStore("member", {
                 let response = await axios.post(backend + "/member/login", loginMember);
                 if (response.status === 200 && response.data.token != null) {
                     // sessionStorage.setItem("aToken", response.data.token);
-                    // let userClaims = VueJwtDecode.decode(response.data.token);
-                    // this.member.email = userClaims.username;
-                    // this.member.nickname = userClaims.nickname;
+                    let userClaims = VueJwtDecode.decode(response.data.token);
+                    this.member.email = userClaims.username;
+                    this.member.nickname = userClaims.nickname;
                 }
             } catch (e) {
                 console.log("로그인 실패");
@@ -32,17 +32,14 @@ export const useMemberStore = defineStore("member", {
                     if (response.status === 200) {
                         return true;
                     } else {
-                        console.log("회원가입 실패");
                         alert("회원가입 실패");
                         return false;
                     }
                 } catch (e) {
-                    console.log("회원가입 실패");
                     alert("회원가입 실패");
                     return false;
                 }
             } else {
-                console.log("비밀번호가 다릅니다");
                 alert("비밀번호가 다릅니다");
                 return false;
             }

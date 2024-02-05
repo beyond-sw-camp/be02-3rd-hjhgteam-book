@@ -50,11 +50,11 @@ export default {
     methods: {
         async handleSocketOpen() {
             try {
-                const response = await axios.get("http://localhost:8080/chat", {
+                const response = await axios.get("http://www.bookspedia.kro.kr/api/chat", {
                     params: { name: this.roomName },
                 });
                 const response1 = await axios.post(
-                    "http://localhost:8080/content/readByName",
+                    "http://www.bookspedia.kro.kr/api/content/readByName",
                     { name: this.roomName },
                     { headers: { "Content-Type": "application/json" } }
                 );

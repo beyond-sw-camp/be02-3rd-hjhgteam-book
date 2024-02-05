@@ -18,6 +18,8 @@ import FollowerPage from "@/page/FollowerPage.vue";
 import CollectionListPage from "@/page/CollectionListPage.vue";
 import CollectionDetailPage from "@/page/CollectionDetailPage.vue";
 import MyCommentPage from "@/page/MyCommentPage.vue";
+import WebNovelComponent from "@/components/WebNovelComponent"
+
 
 const router = createRouter({
     history: createWebHistory(),
@@ -49,6 +51,10 @@ const router = createRouter({
         { path: "/collection", component: CollectionListPage },
         { path: "/collectiondetail/:id", component: CollectionDetailPage },
         { path: "/mycomment", component: MyCommentPage },
+        { 
+            path: "/mycomment", component: MyCommentPage, 
+            children: [{ path: "webnovel", component: WebNovelComponent }]
+          },
     ],
 });
 
