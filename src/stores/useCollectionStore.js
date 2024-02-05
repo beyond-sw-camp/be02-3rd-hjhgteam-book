@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import axios from "axios";
 
-const backend = "www.bookipedia.kro.kr/api";
+const backend = "http://www.bookspedia.kro.kr/api";
 
 export const useCollectionStore = defineStore("collection", {
     state: () => ({ collectionList: [] }),

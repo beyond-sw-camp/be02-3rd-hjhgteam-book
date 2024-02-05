@@ -3,9 +3,7 @@
         <a title="닉네임1" class="follow_a" href="#">
             <div class="photo">
                 <div class="photo2">
-                    <div class="photo3">
-
-                    </div>
+                    <div class="photo3"></div>
                 </div>
             </div>
             <div class="follow_info">
@@ -26,42 +24,36 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 
 export default {
-
     data() {
-        return { followingList: [] }
+        return { followingList: [] };
     },
 
     methods: {
         async getFollowingList() {
-
             try {
-                let response = await axios.get("http://localhost:8080/follow/list/followings",
-                    {
-                        headers: {
-                            Authorization: "Bearer " + "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Imd1c3duMjgwMUBnbWFpbC5jb20iLCJpZCI6MTUsImlhdCI6MTcwNjg0OTc4MiwiZXhwIjoxMDI0MTA5ODcxMjczMDAwfQ.0QldCc7GoXU57C9kQivO-9Ni3sBeveIgNs3DgtIuYf0"
-
-                        }
-                    });
+                let response = await axios.get("http://www.bookspedia.kro.kr/api/follow/list/followings", {
+                    headers: {
+                        Authorization:
+                            "Bearer " +
+                            "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Imd1c3duMjgwMUBnbWFpbC5jb20iLCJpZCI6MTUsImlhdCI6MTcwNjg0OTc4MiwiZXhwIjoxMDI0MTA5ODcxMjczMDAwfQ.0QldCc7GoXU57C9kQivO-9Ni3sBeveIgNs3DgtIuYf0",
+                    },
+                });
                 this.followingList = response.data;
-
             } catch (error) {
-                console.error('Error fetching data:', error);
+                console.error("Error fetching data:", error);
             }
         },
 
-        components: {
-
-        }
+        components: {},
     },
 
     mounted() {
         this.getFollowingList();
-    }
-}
-
+    },
+};
 </script>
 
 <style scoped>
@@ -115,7 +107,8 @@ export default {
     box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 0px 1px inset;
     position: relative;
     z-index: 1;
-    background: url(https://an2-img.amz.wtchn.net/image/v2/jyHe6EFD1ye-qgjsRbBLgw.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UQXdlREV3TUNKZExDSndJam9pTDNZeUwzTjBiM0psTDNWelpYSXZNelpzZGxoTk0zQXpOVmhrYmk5d2NtOW1hV3hsTHpFMk16QXdOemd6TnpFeU9URXhORFU1T0RRaWZRLmM5cnZfUmJEVXRGb1R3NDlmQkYyWTlwUVhRb0RaRW1yR1FOalZWYVFialE) center center / cover no-repeat;
+    background: url(https://an2-img.amz.wtchn.net/image/v2/jyHe6EFD1ye-qgjsRbBLgw.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UQXdlREV3TUNKZExDSndJam9pTDNZeUwzTjBiM0psTDNWelpYSXZNelpzZGxoTk0zQXpOVmhrYmk5d2NtOW1hV3hsTHpFMk16QXdOemd6TnpFeU9URXhORFU1T0RRaWZRLmM5cnZfUmJEVXRGb1R3NDlmQkYyWTlwUVhRb0RaRW1yR1FOalZWYVFialE)
+        center center / cover no-repeat;
     width: 100%;
     height: 100%;
 }

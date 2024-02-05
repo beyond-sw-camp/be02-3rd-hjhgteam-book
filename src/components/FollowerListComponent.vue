@@ -3,8 +3,7 @@
         <a class="follow_a" href="#">
             <div class="photo">
                 <div class="photo2">
-                    <div class="photo3">
-                    </div>
+                    <div class="photo3"></div>
                 </div>
             </div>
             <div class="follow_info">
@@ -22,43 +21,37 @@
 </template>
 
 <script>
-
-import axios from 'axios';
+import axios from "axios";
 
 export default {
-
-data() {
-    return { followerList: [] }
-},
-
-methods: {
-    async getFollowerList() {
-
-        try {
-            // let aToken = sessionStorage.getItem("")
-            let response = await axios.get("http://54.180.123.100:8888/follow/list/followers",
-                {
-                    headers: {
-                        Authorization: "Bearer " + "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Imd1c3duMjgwMUBnbWFpbC5jb20iLCJpZCI6MTUsImlhdCI6MTcwNjg0OTc4MiwiZXhwIjoxMDI0MTA5ODcxMjczMDAwfQ.0QldCc7GoXU57C9kQivO-9Ni3sBeveIgNs3DgtIuYf0"
-                    }
-                });
-            this.followerList = response.data;
-
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
+    data() {
+        return { followerList: [] };
     },
 
-    components: {
+    methods: {
+        async getFollowerList() {
+            try {
+                // let aToken = sessionStorage.getItem("")
+                let response = await axios.get("http://www.bookspedia.kro.kr/api/follow/list/followers", {
+                    headers: {
+                        Authorization:
+                            "Bearer " +
+                            "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Imd1c3duMjgwMUBnbWFpbC5jb20iLCJpZCI6MTUsImlhdCI6MTcwNjg0OTc4MiwiZXhwIjoxMDI0MTA5ODcxMjczMDAwfQ.0QldCc7GoXU57C9kQivO-9Ni3sBeveIgNs3DgtIuYf0",
+                    },
+                });
+                this.followerList = response.data;
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        },
 
-    }
-},
+        components: {},
+    },
 
-mounted() {
-    this.getFollowerList();
-}
-}
-
+    mounted() {
+        this.getFollowerList();
+    },
+};
 </script>
 
 <style scoped>
