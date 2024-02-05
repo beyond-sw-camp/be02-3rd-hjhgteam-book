@@ -37,10 +37,18 @@ Vue 활용
 
 ## 프로젝트 시연 영상
 <details>
-  <summary>프로젝트 시연</summary>
-  ## 접은 제목
-  접은 내용
-  ## 접기 끝
+  <summary> ▶ 프로젝트 시연</summary>
+
+<details>
+  <summary> - 마이페이지 </summary>
+
+  ### 마이페이지
+  <img src = https://github.com/beyond-sw-camp/be02-3rd-hjhgteam-book/assets/148953522/3a1e3499-814c-4dfc-8dec-993e38a00366 width="200" height="400">
+
+  
+</details>
+
+
 </details>
 
 ## 🤼‍♂️팀원
