@@ -213,7 +213,7 @@ export default {
     methods: {
         async login() {
             try {
-                let response = await axios.post("http://localhost:8080/member/login", this.member);
+                let response = await axios.post("www.bookipedia.kro.kr/api/member/login", this.member);
                 if (response.status === 200 && response.data.token != null) {
                     sessionStorage.setItem("aToken", response.data.token);
                     let userClaims = VueJwtDecode.decode(response.data.token);
