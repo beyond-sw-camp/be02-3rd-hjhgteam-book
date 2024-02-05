@@ -217,7 +217,7 @@ export default {
                 this.member.password2 != null
             ) {
                 try {
-                    let response = await axios.post("http://localhost:8080/member/signup", this.member);
+                    let response = await axios.post("www.bookipedia.kro.kr/api/member/signup", this.member);
                     if (response.status === 200) {
                         window.location.href = "/login";
                     } else {
