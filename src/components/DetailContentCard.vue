@@ -1,36 +1,29 @@
 <!-- 컬렉션 목록에서 해당 컬렉션의 상세페이지의 card -->
 <template>
-    <li class="content_li" v-for="(collection, index) in collectionStore.collectionList" :key="index">
-        <a href="#">
-            <div class="content_li_div">
-                <div class="content_img">
-                    <img class="img_class"
-                        :src="`${collection.contentImage}`" />
-                </div>
-                <div class="content_div2"></div>
-            </div>
-            <div class="content_name">
-                <div class="content_name2">{{ collection.contentName }}</div>
-            </div>
-        </a>
-    </li>
+  <li class="content_li">
+      <a href="#">
+      <div class="content_li_div">
+        <div class="content_img">
+          <!-- <img class="img_class" -->
+          <!-- :src="`${detail.contentImage}`" /> -->
+          <img src="">
+        </div>
+        <div class="content_div2"></div>
+      </div>
+      <div class="content_name">
+        <div class="content_name2">작품이름</div>
+      </div>
+    </a>
+  </li>
 </template>
 
 <script>
-import { useCollectionStore } from '../stores/useCollectionStore'
-import { mapStores } from 'pinia'
 
 
 export default {
-    data() {
-    
-    },
-    computed: {
-        ...mapStores(useCollectionStore)
-    },
-    mounted() {
-        this.collectionStore.getCollectionList();
-    }
+
+
+
 }
 
 </script>

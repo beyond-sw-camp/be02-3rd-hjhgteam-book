@@ -2,19 +2,30 @@ import { defineStore } from "pinia";
 import axios from "axios";
 
 const backend = "http://www.bookspedia.kro.kr/api";
-
 export const useCollectionStore = defineStore("collection", {
-    state: () => ({ collectionList: [] }),
-    actions: {
-        async getCollectionList() {
-            let response = await axios.get(backend + "/collection/list", {
-                headers: {
-                    Authorization:
-                        "Bearer " +
-                        "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Imd1c3duMjgwMUBnbWFpbC5jb20iLCJpZCI6MSwiaWF0IjoxNzA2NzU0ODczLCJleHAiOjEwMjQwNTI5MjkzODIwMDB9.s6EL-TDcMb0_5Kf-20QmarVEfjapETFICuW7Y8rTxL8",
-                },
-            });
-            this.collectionList = response.data;
+  state: () => ({ collectionList: [] }, { detailList: [] }),
+  actions: {
+    async getCollectionList() {
+      let aToken = sessionStorage.getItem("aToken");
+      let response = await axios.get(backend + "/collection/list", {
+        headers: {
+          Authorization: "Bearer " + aToken,
         },
+      });
+      this.collectionList = response.data;
+      console.log(this.collectionList);
+      console.log(this.collectionList.length);
     },
+
+    async getCollectionDetail(id) {
+      let aToken = sessionStorage.getItem("aToken");
+      let response = await axios.get(backend + "/collection/" + id, {
+        headers: {
+          Authorization: "Bearer " + aToken,
+        },
+      });
+      this.detailList = response.data;
+      console.log(this.detailList);
+    },
+  },
 });
