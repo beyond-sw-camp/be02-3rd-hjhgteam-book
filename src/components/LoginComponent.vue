@@ -15,7 +15,11 @@
                 <section>
                     <div>
                         <div class="login-box-main">
-                            <form @submit.prevent="login()" method="post" action="http://localhost:8080/member/login">
+                            <form
+                                @submit.prevent="login()"
+                                method="post"
+                                action="http://www.bookspedia.kro.kr/api/member/login"
+                            >
                                 <div class="login-box-form-id">
                                     <label value="false" class="login-box-form-id-label">
                                         <div class="login-box-form-id-label-text">
@@ -213,7 +217,7 @@ export default {
     methods: {
         async login() {
             try {
-                let response = await axios.post("www.bookspedia.kro.kr/api/member/login", this.member);
+                let response = await axios.post("http://www.bookspedia.kro.kr/api/member/login", this.member);
                 if (response.status === 200 && response.data.token != null) {
                     sessionStorage.setItem("aToken", response.data.token);
                     let userClaims = VueJwtDecode.decode(response.data.token);

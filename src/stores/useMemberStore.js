@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 import axios from "axios";
 // import VueJwtDecode from "vue-jwt-decode";
 
-const backend = "www.bookspedia.kro.kr/api";
+const backend = "http://www.bookspedia.kro.kr/api";
 
 export const useMemberStore = defineStore("member", {
     state: () => ({ member: { email: "", nickname: "" } }),
@@ -32,17 +32,14 @@ export const useMemberStore = defineStore("member", {
                     if (response.status === 200) {
                         return true;
                     } else {
-                        console.log("회원가입 실패");
                         alert("회원가입 실패");
                         return false;
                     }
                 } catch (e) {
-                    console.log("회원가입 실패");
                     alert("회원가입 실패");
                     return false;
                 }
             } else {
-                console.log("비밀번호가 다릅니다");
                 alert("비밀번호가 다릅니다");
                 return false;
             }
