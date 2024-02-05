@@ -22,27 +22,27 @@ export const useMemberStore = defineStore("member", {
                 alert("로그인 실패");
             }
         },
-        async signup(email, password1, password2) {
-            if (password1 == password2) {
-                let signupMember = { email: email, password: password1 };
+        // async signup(email, password1, password2) {
+        //     if (password1 == password2) {
+        //         let signupMember = { email: email, password: password1 };
 
-                try {
-                    let response = await axios.post(backend + "/member/signup", signupMember);
+        //         try {
+        //             let response = await axios.post(backend + "/member/signup", signupMember);
 
-                    if (response.status === 200) {
-                        return true;
-                    } else {
-                        alert("회원가입 실패");
-                        return false;
-                    }
-                } catch (e) {
-                    alert("회원가입 실패");
-                    return false;
-                }
-            } else {
-                alert("비밀번호가 다릅니다");
-                return false;
-            }
-        },
+        //             if (response.status === 200) {
+        //                 return true;
+        //             } else {
+        //                 alert("회원가입 실패");
+        //                 return false;
+        //             }
+        //         } catch (e) {
+        //             alert("회원가입 실패");
+        //             return false;
+        //         }
+        //     } else {
+        //         alert("비밀번호가 다릅니다");
+        //         return false;
+        //     }
+        // },
     },
 });

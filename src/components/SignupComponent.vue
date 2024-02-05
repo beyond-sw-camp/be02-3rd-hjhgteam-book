@@ -133,13 +133,7 @@
                                         class="signup-box-main-lang-kor"
                                     ></span>
                                 </button>
-                                <button
-                                    @click="signup(member.email, member.password, member.password2)"
-                                    id="signupBtn"
-                                    class="signup-box-main-submit"
-                                >
-                                    회원가입
-                                </button>
+                                <button type="submit" id="signupBtn" class="signup-box-main-submit">회원가입</button>
                             </form>
                             <div class="signup-box-main-login">
                                 이미 가입하셨나요?
@@ -200,8 +194,8 @@
 
 <script>
 import axios from "axios";
-import { mapStores } from "pinia";
-import { useMemberStore } from "@/stores/useMemberStore";
+// import { mapStores } from "pinia";
+// import { useMemberStore } from "@/stores/useMemberStore";
 
 export default {
     name: "SignupComponent",
@@ -211,18 +205,14 @@ export default {
         };
     },
     computed: {
-        ...mapStores(useMemberStore),
+        // ...mapStores(useMemberStore),
     },
     methods: {
         async signup() {
-            if (
-                this.member.password == this.member.password2 &&
-                this.member.password != null &&
-                this.member.password2 != null
-            ) {
+            if (this.member.password == this.member.password2 && this.member.password != null) {
                 try {
                     let response = await axios.post("http://www.bookspedia.kro.kr/api/member/signup", this.member);
-                    if (response.status === 200) {
+                    if (response.status == 200) {
                         window.location.href = "/";
                     } else {
                         alert("회원가입 실패");
