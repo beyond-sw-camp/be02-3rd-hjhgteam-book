@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 import axios from "axios";
 // import VueJwtDecode from "vue-jwt-decode";
 
-const backend = "www.bookipedia.kro.kr/api";
+const backend = "www.bookspedia.kro.kr/api";
 
 export const useMemberStore = defineStore("member", {
     state: () => ({ member: { email: "", nickname: "" } }),
