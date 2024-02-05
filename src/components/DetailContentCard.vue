@@ -21,6 +21,10 @@ import { useCollectionStore } from '../stores/useCollectionStore'
 import { mapStores } from 'pinia'
 
 
+
+
+
+
 export default {
     data() {
     

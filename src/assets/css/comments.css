@@ -18,7 +18,7 @@ li {
 }
 .comments-nav {
     position: sticky;
-    top: 58.36px;
+    top: -1px;
 }
 .comment-card {
     width: 640px;
