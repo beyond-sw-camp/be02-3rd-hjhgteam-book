@@ -1,6 +1,6 @@
 <template>
   <div
-    class="border-bottom bg-white mt-5 p-3 pb-2 comments-nav"
+    class="border-bottom bg-white   p-3 pb-2 comments-nav"
     id="comments-nav"
   >
     <a href="{% url 'posts:detail' detail_pk %}">
@@ -207,6 +207,10 @@ export default {
 <style scoped>
 @import "../assets/css/base.css";
 @import "../assets/css/comments.css";
+.comment-card {
+    width: 700px; 
+    border-radius: 15px;
+}
 </style>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
  

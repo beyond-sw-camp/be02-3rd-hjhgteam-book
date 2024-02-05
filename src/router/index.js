@@ -7,7 +7,8 @@ import ChatRoomPage from "../page/ChatRoomPage.vue";
 import MainPage from "../page/MainPage.vue";
 import CommentsPage from "../page/CommentsPage.vue";
 import DetailPage from "../page/DetailPage.vue";
-import SearchPage from "../page/SearchPage.vue";
+import SearchPage from "../page/SearchPage.vue"; 
+import CommentModal from "../components/CommentModalComponent.vue";
 // 마이페이지 라우터
 import MyPage from "@/page/MyPage.vue";
 import MyUpdateComponent from "../components/MyUpdateComponent.vue";
@@ -24,8 +25,10 @@ const router = createRouter({
         { path: "/", component: MainPage },
         // { path: "/login", component: LoginComponent },
         // { path: "/signup", component: SignupComponent },
-        { path: "/detail/1/comments", component: CommentsPage },
-        { path: "/detail/1", component: DetailPage },
+        { path: "/detail/:id/comments", component: CommentsPage },
+        { path: "/detail/:id", component: DetailPage,
+        children: [{ path: "comment", component: CommentModal }],
+    },
         { path: "/search/1", component: SearchPage },
         { path: "/chatlist", component: ChatListPage },
         {
