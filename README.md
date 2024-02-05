@@ -36,10 +36,12 @@ Vue 활용
 [figma 주소](https://www.figma.com/files/project/182949888/%ED%98%84%EC%A3%BC%ED%98%84%EA%B7%A0..?fuid=1129304886884726829)
 
 ## 프로젝트 시연 영상
-
-```
-시연 영상 추가
-```
+<details>
+  <summary>프로젝트 시연</summary>
+  ## 접은 제목
+  접은 내용
+  ## 접기 끝
+</details>
 
 ## 🤼‍♂️팀원
 
