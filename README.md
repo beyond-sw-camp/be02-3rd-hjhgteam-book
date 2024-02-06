@@ -26,7 +26,8 @@
 
 ## 기능 명세서
 
-[figma 주소](https://www.figma.com/file/1dumt0bPpq0bd4EnRjJQ38/BOOKSPEDIA-%EA%B8%B0%EB%8A%A5-%EC%A0%95%EC%9D%98%EC%84%9C-%26-%ED%99%94%EB%A9%B4-%EC%84%A4%EA%B3%84%EC%84%9C?type=design&node-id=0-1&mode=design&t=b7Xl4VmXvo3g0DxN-0)
+<h5><a href="https://www.figma.com/file/1dumt0bPpq0bd4EnRjJQ38/BOOKSPEDIA-%EA%B8%B0%EB%8A%A5-%EC%A0%95%EC%9D%98%EC%84%9C-%26-%ED%99%94%EB%A9%B4-%EC%84%A4%EA%B3%84%EC%84%9C?type=design&node-id=0-1&mode=design&t=b7Xl4VmXvo3g0DxN-0">figma 바로가기</a></h5>
+
 
 <img src="./src/assets/figmaREADME.PNG
 ">
