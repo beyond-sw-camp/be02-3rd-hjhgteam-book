@@ -107,7 +107,7 @@ export default {
 <style scoped>
 @import "../assets/css/index.css";
 
-#collectCarousel .card {
+#collectCarousel2 .card {
     /* collectCarousel 속한 .card의 CSS 스타일을 여기에 추가하세요 */
     width: calc(100% / 6);
     /* 등분 */

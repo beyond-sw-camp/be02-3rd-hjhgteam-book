@@ -39,18 +39,9 @@
 
 <script>
 import axios from "axios";
-// import VueJwtDecode from "vue-jwt-decode";
-
 // const backend = 'https://www.lonuashop.kro.kr/api';
 const backend = "http://3.34.199.45:8080";
-// const token = sessionStorage.getItem("aToken");
-// console.log(987);
-// console.log(token);
-// VueJwtDecode.decode(sessionStorage.getItem("aToken")).username;
-// let ttt = VueJwtDecode.decode(token);
-// console.log(ttt.id);
-// console.log(ttt)
-// // console.log(token.id)
+
 
 export default {
     name: "CommentModal",
@@ -80,10 +71,11 @@ export default {
 
         async createComment() {
             event.preventDefault();
+            const token = sessionStorage.getItem("aToken");
             try {
                 let response = await axios.post(backend + `/comment/create`, this.commentReq, {
                     headers: {
-                        // Authorization: "Bearer " + token,
+                        Authorization: "Bearer " + token,
                         "Content-Type": "application/json",
                     },
                 });
@@ -92,6 +84,7 @@ export default {
             } catch (error) {
                 console.error(error);
             }
+
         },
     },
 
