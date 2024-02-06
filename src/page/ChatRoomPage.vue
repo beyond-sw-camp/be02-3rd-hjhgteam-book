@@ -12,7 +12,7 @@
         </div>
     </div>
 </template>
-
+  
 <script>
 import axios from "axios";
 import { useMemberStore } from "../stores/useMemberStore.js";
@@ -28,8 +28,7 @@ export default {
     },
     data() {
         return {
-            logoImg:
-                "https://image-comic.pstatic.net/webtoon/796152/thumbnail/thumbnail_IMAG21_26b9c1d8-ca2d-4fc7-87ea-a3334634236a.jpg", //content db와 연결해서 roomName에 맞는 이미지 가져오는 것으로 수정 필요
+            logoImg: '',
             messagesArea: null,
             messageInput: null,
             sendBtn: null,
@@ -82,7 +81,7 @@ export default {
         handleSocketMessage(event) {
             const message = JSON.parse(event.data);
             if (message.sender !== this.memberStore.member.nickname) {
-                this.messagesArea.value += `\n${message.sender} : ${message.message}`;
+                this.messagesArea.value += '\n${message.sender} : ${message.messag';
             }
         },
         handleSocketClose() {
@@ -104,8 +103,8 @@ export default {
     },
 };
 </script>
-
-<style scoped>
+  
+<style>
 .chatRoom {
     display: flex;
     justify-content: center;
@@ -115,6 +114,7 @@ export default {
 
 .contents-info {
     margin-right: 10px;
+
 }
 
 .logo-image {
@@ -139,7 +139,9 @@ export default {
 #message {
     width: 300px;
     height: 20px;
+
 }
+
 
 #send {
     position: relative;
