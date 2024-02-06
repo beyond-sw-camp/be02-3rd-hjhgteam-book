@@ -37,7 +37,7 @@ export default {
         async createChatroom() {
         try {
           await axios.post(
-            "http://localhost:8080/chat/create",
+            "http://www.bookspedia.kro.kr/api/chat/create",
             { name: this.newChatroomName },
             { headers: { 'Content-Type': 'application/json' } }
           );
