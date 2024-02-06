@@ -22,7 +22,7 @@
 
 ## 🔍 STACKS
 
-<img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"><img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white"><img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"><img src="https://img.shields.io/badge/vue.js-4FC08D?style=for-the-badge&logo=vue.js&logoColor=white"><img src="https://img.shields.io/badge/bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white"><img src="https://img.shields.io/badge/fontawesome-339AF0?style=for-the-badge&logo=fontawesome&logoColor=white"><img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white"><img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white"><img src="https://img.shields.io/badge/Ununtu-E334f1?style=for-the-badge&logo=Ubuntu&logoColor=white"><img src="https://img.shields.io/badge/nginx-e8f717?style=for-the-badge&logo=nginx&logoColor=white"><img src="https://img.shields.io/badge/Pinia-7952B3?style=for-the-badge&logo=Pinia&logoColor=white"><img src="https://img.shields.io/badge/MySQL-ff1ffE?style=for-the-badge&logo=MySQL&logoColor=white"><img src="https://img.shields.io/badge/Amazon AWS-112F26?style=for-the-badge&logo=AmazonAWS&logoColor=white"><img src="https://img.shields.io/badge/Amazon S3-E34F26?style=for-the-badge&logo=Amazon S3&logoColor=white"><img src="https://img.shields.io/badge/Amazon%20EC2-E1120?style=for-the-badge&logo=Amazon%20EC2&logoColor=white"><img src="https://img.shields.io/badge/vue%20router-15ffB6?style=for-the-badge&logo=&logoColor=white">
+<img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"><img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white"><img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"><img src="https://img.shields.io/badge/vue.js-4FC08D?style=for-the-badge&logo=vue.js&logoColor=white"><img src="https://img.shields.io/badge/bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white"><img src="https://img.shields.io/badge/fontawesome-339AF0?style=for-the-badge&logo=fontawesome&logoColor=white"><img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white"><img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white"><img src="https://img.shields.io/badge/Ununtu-E334f1?style=for-the-badge&logo=Ubuntu&logoColor=white"><img src="https://img.shields.io/badge/nginx-e8f717?style=for-the-badge&logo=nginx&logoColor=white"><img src="https://img.shields.io/badge/Pinia-7952B3?style=for-the-badge&logo=Pinia&logoColor=white"><img src="https://img.shields.io/badge/MySQL-4f2F26?style=for-the-badge&logo=MySQL&logoColor=white"><img src="https://img.shields.io/badge/Amazon S3-E34F26?style=for-the-badge&logo=Amazon S3&logoColor=white"><img src="https://img.shields.io/badge/Amazon%20EC2-E1120?style=for-the-badge&logo=Amazon%20EC2&logoColor=white"><img src="https://img.shields.io/badge/vue%20router-15ffB6?style=for-the-badge&logo=&logoColor=white">
 
 ## 기능 명세서
 
@@ -102,6 +102,15 @@
   </details>
 
   <details>
+    <summary> 메인화면 </summary>
+
+### 메인화면
+  <img src ="./src/assets/gif/main.gif" width="600" height="400">
+
+  </details>
+
+
+  <details>
     <summary> 작품 코멘트 생성</summary>
 
 ### 작품 코멘트 생성
@@ -125,8 +134,13 @@
 
   </details>
 
+  <details>
+    <summary> 채팅 </summary>
 
-  
+### 채팅
+  <img src ="./src/assets/gif/chat.gif" width="600" height="400">
+
+  </details>
 
 </details>
 
