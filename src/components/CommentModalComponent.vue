@@ -39,16 +39,16 @@
 
 <script>
 import axios from "axios";
-import VueJwtDecode from "vue-jwt-decode";
+// import VueJwtDecode from "vue-jwt-decode";
 
 // const backend = 'https://www.lonuashop.kro.kr/api';
 const backend = "http://3.34.199.45:8080";
-const token = sessionStorage.getItem("aToken");
-console.log(987);
-console.log(token);
-// // VueJwtDecode.decode(sessionStorage.getItem("aToken")).username;
-let ttt = VueJwtDecode.decode(token);
-console.log(ttt.id);
+// const token = sessionStorage.getItem("aToken");
+// console.log(987);
+// console.log(token);
+// VueJwtDecode.decode(sessionStorage.getItem("aToken")).username;
+// let ttt = VueJwtDecode.decode(token);
+// console.log(ttt.id);
 // console.log(ttt)
 // // console.log(token.id)
 
@@ -100,9 +100,7 @@ export default {
         this.id = this.$route.params.id;
         console.log("id:", this.id);
         this.getContent(this.id);
-        this.commentReq.contentId = this.id;
-        // console.log(123123);
-        // console.log(sessionStorage.getItem("aToken"));
+        this.commentReq.contentId = this.id; 
     },
     computed: {
         starWidth() {
