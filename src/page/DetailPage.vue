@@ -274,6 +274,8 @@ export default {
         if (this.id == this.axiosAllComment[i].content.contentId) {
           res.push(this.axiosAllComment[i]);
           // 이중에서 내가 만든거 따로 저장
+          //this.axiosAllComment[i].member.id 
+          //
         }
       }
       console.log(res);

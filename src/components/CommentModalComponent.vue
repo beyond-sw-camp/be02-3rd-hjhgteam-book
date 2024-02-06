@@ -42,16 +42,25 @@
 
 <script>
 import axios from "axios";
+import VueJwtDecode from "vue-jwt-decode";
 
 // const backend = 'https://www.lonuashop.kro.kr/api';
-const backend = "http://3.34.199.45:8080";
-const token = sessionStorage.getItem("token");
+const backend = "http://3.34.199.45:8080"; 
+const token = sessionStorage.getItem("aToken");
+console.log(987)
+console.log(token)
+// // VueJwtDecode.decode(sessionStorage.getItem("aToken")).username;
+let ttt = VueJwtDecode.decode(token);
+console.log(ttt.id)
+// console.log(ttt)
+// // console.log(token.id)
+
 
 export default {
   name: "CommentModal",
   props: {},
   data() {
-    return {
+    return { 
       id: null, 
       axiosContent: {},
       commentReq: {
@@ -83,11 +92,12 @@ export default {
           backend + `/comment/create`,
           this.commentReq, {
             headers: {
-              Authorization: `Bearer ${token}`,
+              Authorization: "Bearer "+ token,
               "Content-Type": "application/json",
             },
           }
         );
+        window.location.replace(`/detail/${this.id}`)
         console.log(response); 
       } catch (error) {
         console.error(error);
@@ -103,6 +113,7 @@ export default {
     this.commentReq.contentId=this.id;
     // console.log(123123);
     // console.log(sessionStorage.getItem("aToken")); 
+    
   },
   computed: {
     starWidth() {
