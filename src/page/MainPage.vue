@@ -2,7 +2,7 @@
     <div class="container mb-5">
         <section class="index-category">
             <div class="index-category_title">
-                <b>컬렉션axios</b>
+                <b>순위</b>
                 <!-- id 수정 3개 -->
             </div>
             <div id="collectCarousel2" class="carousel carousel-dark slide" data-ride="carousel">
