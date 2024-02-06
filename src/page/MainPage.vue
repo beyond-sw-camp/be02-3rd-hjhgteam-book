@@ -7,37 +7,23 @@
             </div>
             <div id="collectCarousel2" class="carousel carousel-dark slide" data-ride="carousel">
                 <div class="carousel-inner">
-                    <div
-                        v-for="(chunk, index) in chunkedLists3"
-                        :key="index"
-                        class="carousel-item"
-                        :class="{ active: index === 0 }"
-                    >
+                    <div v-for="(chunk, index) in chunkedLists3" :key="index" class="carousel-item"
+                        :class="{ active: index === 0 }">
                         <div class="row">
                             <ul class="card-wrapper">
-                                <li v-for="(webtoon, webtoonIndex) in chunk" :key="webtoonIndex" class="card">
-                                    <ContantCard v-bind:dataObj="webtoon"></ContantCard>
+                                <li v-for="(webtoon, webtoonIndex) in filteredChunk(chunk)" :key="webtoonIndex" class="card">
+                                    <ContantCard v-if="webtoon.classify === classify" :dataObj="webtoon"></ContantCard>
                                 </li>
                             </ul>
                         </div>
                     </div>
                 </div>
-                <button
-                    id="prevBtn"
-                    class="carousel-control-prev"
-                    type="button"
-                    data-bs-target="#collectCarousel2"
-                    data-bs-slide="prev"
-                >
+                <button id="prevBtn" class="carousel-control-prev" type="button" data-bs-target="#collectCarousel2"
+                    data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 </button>
-                <button
-                    id="nextBtn"
-                    class="carousel-control-next"
-                    type="button"
-                    data-bs-target="#collectCarousel2"
-                    data-bs-slide="next"
-                >
+                <button id="nextBtn" class="carousel-control-next" type="button" data-bs-target="#collectCarousel2"
+                    data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 </button>
             </div>
@@ -57,6 +43,9 @@ export default {
     data() {
         return { axiosList: [] };
     },
+    props: {
+        classify: Boolean,
+    },
     methods: {
         async getAllContant(page, size) {
             try {
@@ -68,12 +57,15 @@ export default {
                 console.error(error);
             }
         },
+        filteredChunk(chunk) {
+            return chunk.filter(webtoon => webtoon.classify === this.classify);
+        },
     },
     components: {
         ContantCard,
     },
     created() {
-        this.getAllContant(1, 12);
+        this.getAllContant(1, 20);
     },
     computed: {
         chunkedLists1() {

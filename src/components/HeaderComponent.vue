@@ -10,10 +10,14 @@
                     </a>
                 </li>
                 <li class="header-icon-list">
-                    <a href="#" class="header-icon-list-link"> 웹툰 </a>
+                    <router-link :to="{ path: '/webtoon', query: { classify: true } }" class="header-icon-list-link">
+                        웹툰
+                    </router-link>
                 </li>
                 <li class="header-icon-list">
-                    <a href="#" class="header-icon-list-link"> 웹소설 </a>
+                    <router-link :to="{ path: '/webnovel', query: { classify: false } }" class="header-icon-list-link">
+                        웹소설
+                    </router-link>
                 </li>
                 <li class="header-icon-list">
                     <a href="/chatlist" class="header-icon-list-link"> 채팅 </a>
@@ -24,15 +28,8 @@
                             <form action="#">
                                 <label class="header-search-label">
                                     <i class="fa-solid fa-magnifying-glass"></i>
-                                    <input
-                                        autocomplete="off"
-                                        id="desktop-search-field"
-                                        placeholder="컨텐츠, 작가, 장르를 검색해보세요."
-                                        type="text"
-                                        name="searchKeyword"
-                                        class="header-search-text"
-                                        value=""
-                                    />
+                                    <input autocomplete="off" id="desktop-search-field" placeholder="컨텐츠, 작가, 장르를 검색해보세요."
+                                        type="text" name="searchKeyword" class="header-search-text" value="" />
                                 </label>
                             </form>
                         </div>
@@ -72,7 +69,7 @@ export default {
     data() {
         return {
             member: { email: "" },
-            logoImg: "https://bookipedia.s3.ap-northeast-2.amazonaws.com/2024/02/06/6adbc0fe-0ead-4186-812e-e5d6e83e876b_bookspedia.png", 
+            logoImg: "https://bookipedia.s3.ap-northeast-2.amazonaws.com/2024/02/06/6adbc0fe-0ead-4186-812e-e5d6e83e876b_bookspedia.png",
         };
     },
     computed: {
