@@ -1,30 +1,15 @@
-// const { defineConfig } = require("@vue/cli-service");
-// module.exports = defineConfig({
-//     transpileDependencies: true,
-//     devServer: {
-//         proxy: {
-//             "/api": {
-//                 target: "http://http://www.bookspedia.kro.kr",
-//                 changeOrigin: true,
-//                 pathRewrite: {
-//                     "^/api": "",
-//                 },
-//             },
-//         },
-//     },
-// });
+// 테스트용
+const { defineConfig } = require('@vue/cli-service')
+module.exports = defineConfig({
+  transpileDependencies: true
+}) 
 
-module.exports = {
-    publicPath: "",
-    // publicPath: "/dist/",
-    // indexPath: "index.html",
-};
 
+// 빌드용
 // module.exports = {
-//   ...defineConfig({
-//     transpileDependencies: true
-//   }),
-//   devServer: {
-//     proxy: 'http://3.34.199.45:8080'
-//   }
+//     publicPath: "",
+//     // publicPath: "/dist/",
+//     // indexPath: "index.html",
 // };
+
+ 
