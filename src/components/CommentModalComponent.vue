@@ -83,7 +83,7 @@ export default {
             try {
                 let response = await axios.post(backend + `/comment/create`, this.commentReq, {
                     headers: {
-                        Authorization: "Bearer " + token,
+                        // Authorization: "Bearer " + token,
                         "Content-Type": "application/json",
                     },
                 });
