@@ -12,7 +12,7 @@
                         <div class="row">
                             <ul class="card-wrapper">
                                 <li v-for="(webtoon, webtoonIndex) in filteredChunk(chunk)" :key="webtoonIndex" class="card">
-                                    <ContantCard v-if="webtoon.classify === classify" :dataObj="webtoon"></ContantCard>
+                                    <ContantCard :dataObj="webtoon"></ContantCard>
                                 </li>
                             </ul>
                         </div>
@@ -58,6 +58,9 @@ export default {
             }
         },
         filteredChunk(chunk) {
+            if (this.classify === null || this.classify === undefined) {
+                return chunk;
+            }
             return chunk.filter(webtoon => webtoon.classify === this.classify);
         },
     },

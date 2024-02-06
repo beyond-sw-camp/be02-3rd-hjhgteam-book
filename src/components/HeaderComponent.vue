@@ -20,7 +20,9 @@
                     </router-link>
                 </li>
                 <li class="header-icon-list">
-                    <a href="/chatlist" class="header-icon-list-link"> 채팅 </a>
+                    <router-link to="/chatlist">
+                        채팅
+                    </router-link>
                 </li>
                 <li class="header-icon-list-search">
                     <div class="header-search">

@@ -23,7 +23,16 @@ import WebNovelComponent from "@/components/WebNovelComponent";
 const router = createRouter({
   history: createWebHistory(),
   routes: [
-    { path: "/", component: MainPage },
+    {
+      path: "/",
+      component: MainPage,
+      props: (route) => ({
+        classify:
+          route.query.classify !== undefined
+            ? route.query.classify === "true"
+            : null,
+      }),
+    },
     { path: "/detail/:id/comments", component: CommentsPage },
     {
       path: "/detail/:id",

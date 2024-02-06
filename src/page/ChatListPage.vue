@@ -6,6 +6,11 @@
             </router-link>
         </div>
         <router-view></router-view>
+        <hr>
+
+        <h4 class="createchat">채팅방 생성</h4>
+        <input  class="createchat" type="text" id="createRoomName" v-model="newChatroomName" />
+        <button @click="createChatroom">전송</button>
     </div>
 </template>
 
@@ -29,6 +34,21 @@ export default {
                 console.error("Error fetching chatrooms", error);
             }
         },
+        async createChatroom() {
+        try {
+          await axios.post(
+            "http://localhost:8080/chat/create",
+            { name: this.newChatroomName },
+            { headers: { 'Content-Type': 'application/json' } }
+          );
+          // After creating the chatroom, refresh the list
+          await this.fetchChatrooms();
+          // Clear the input field
+          this.newChatroomName = '';
+        } catch (error) {
+          console.error("Error creating chatroom", error);
+        }
+      },
     },
     mounted() {
         this.fetchChatrooms();
@@ -56,5 +76,8 @@ export default {
     border: black solid 3px;
     padding: 10px;
     margin: 10px 20px 0px;
+}
+.createchat{
+    margin-left: 20px;
 }
 </style>
