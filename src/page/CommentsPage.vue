@@ -92,7 +92,7 @@ export default {
     contentCommentList() {
       const res = [];
       for (let i = 0; i < this.axiosAllComment.length; i++) {
-        if (this.id == this.axiosAllComment[i].contentId) {
+        if (this.id == this.axiosAllComment[i].content.contentId) {
           res.push(this.axiosAllComment[i]);
         }
       }

@@ -13,7 +13,7 @@
       <div class="d-flex flex-column">
         <h1 id="name" class="mt-5"><b>{{axiosContent.name}} </b></h1>
         <span id="categoryId" class="mb-2 text-secondary font-15"
-          >날짜・ 장르1개</span
+          >카테고리: {{axiosContent.categoryName}}</span
         >
         <!-- 장르 이름 backend수정중 -->
         <div class="mb-1 py-2 d-flex border-top border-bottom font-15">
@@ -91,18 +91,19 @@
           <div class="d-flex justify-content-between mb-2">
             <h2><b>기본 정보</b></h2>
           </div>
-          <div class="text-secondary font-15">detail.original_title</div>
           <div class="text-secondary font-15">
-            detail.release_date · genre.name ,genre.name,genre.name,
+            별점 그래프 
           </div>
-          <div class="text-secondary font-15">11분</div>
-          <div class="text-secondary font-15">상세상세</div>
+          <div class="text-secondary font-15">간단한설명</div>
+          
+          <div class="text-secondary font-15">목차</div>
+          <div class="text-secondary font-15">기타등등</div>
         </div>
 
         <!-- 출연진 -->
         <div class="mb-4 pb-3">
           <div class="d-flex justify-content-between mb-2">
-            <h2><b>출연</b></h2>
+            <h2><b>저자</b></h2>
           </div>
           <div class="row w-100">
             <!-- {% for credit in credits %} -->
@@ -111,18 +112,12 @@
                 <img src=" " alt="" />
               </div>
               <div class="credit-info border-bottom">
-                <div class="font-17">이름</div>
-                <div class="text-secondary font-14">캐릭터</div>
+                <div class="font-17">{{axiosContent.writerName}}</div>
+                <div class="text-secondary font-14">작가1명</div>
               </div>
             </div>
             <div class="col-6 d-flex align-items-center gap-2 pb-2 mb-2">
-              <div class="credit-image_form">
-                <img src=" " alt="" />
-              </div>
-              <div class="credit-info border-bottom">
-                <div class="font-17">이름</div>
-                <div class="text-secondary font-14">캐릭터</div>
-              </div>
+ 
             </div>
           </div>
         </div>
@@ -146,14 +141,15 @@
             <!-- 3개 기본값 if 없으면ㄴㄴ  -->
             <!-- proxy in proxy배열 -->
 
-            <li
-              v-for="(comment, index) in contentCommentList"
-              :key="index"
+            <template v-for="(comment, index) in contentCommentList"
+              :key="index">
+            <li           
               class="comment-card"
+              v-if="index < 3"
             >
-              <div v-if="contentCommentList.length < 3">
+              <!-- <div v-if="contentCommentList.length < 3">
                 <div v-if="contentCommentList.length - index < 1"></div>
-              </div>
+              </div> -->
 
               <div v-if="index <= 2">
                 <div
@@ -209,6 +205,7 @@
                 </form>
               </div>
             </li>
+          </template>
           </ul>
         </div>
       </div>
@@ -274,8 +271,9 @@ export default {
     contentCommentList() {
       const res = [];
       for (let i = 0; i < this.axiosAllComment.length; i++) {
-        if (this.id == this.axiosAllComment[i].contentId) {
+        if (this.id == this.axiosAllComment[i].content.contentId) {
           res.push(this.axiosAllComment[i]);
+          // 이중에서 내가 만든거 따로 저장
         }
       }
       console.log(res);
@@ -302,5 +300,14 @@ export default {
 <style scoped>
 @import "../assets/css/base.css";
 @import "../assets/css/detail.css";
+
+.card-wrapper {
+    justify-content: center;
+}
+
+.comment-content {
+    overflow: hidden;
+}
+
 </style>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
