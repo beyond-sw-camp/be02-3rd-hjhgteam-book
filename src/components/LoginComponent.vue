@@ -43,36 +43,10 @@
                                         </div>
                                         <span value="false" class="login-box-form-id-label-cert"></span>
                                     </label>
-                                    <!-- 틀린 입력값 -->
-                                    <!-- <label value="true" class="login-box-form-id-label">
-                    <div class="login-box-form-id-label-text">
-                      <input
-                        autocomplete="off"
-                        placeholder="이메일"
-                        type="email"
-                        name="email"
-                        class="login-box-form-id-label-text-input"
-                        value=""
-                      />
-                    </div>
-                    <div value="true" class="login-box-form-id-label-clear">
-                      <span
-                        aria-label="clear"
-                        data-test="clearButton"
-                        role="button"
-                        class="login-box-form-id-label-clear-img"
-                      ></span>
-                    </div>
-                    <span
-                      value="true"
-                      class="login-box-form-id-label-cert"
-                    ></span>
-                  </label> -->
                                     <p data-test="errors-email" class="login-box-form-id-badid">
                                         정확하지 않은 이메일입니다.
                                     </p>
                                 </div>
-
                                 <div class="login-box-form-pw">
                                     <label value="false" class="login-box-form-pw-label">
                                         <div class="login-box-form-pw-label-text">
@@ -96,37 +70,6 @@
                                         </div>
                                         <span value="false" class="login-box-form-pw-label-cert"></span>
                                     </label>
-                                    <!-- 틀린 입력값 -->
-                                    <!-- <label value="true" class="login-box-form-pw-label">
-                    <div class="login-box-form-pw-label-text">
-                      <input
-                        autocomplete="off"
-                        placeholder="비밀번호"
-                        type="password"
-                        name="password"
-                        class="login-box-form-pw-label-text-input"
-                        value=""
-                      />
-                    </div>
-                    <div value="true" class="login-box-form-pw-label-clear">
-                      <span
-                        aria-label="clear"
-                        data-test="clearButton"
-                        role="button"
-                        class="login-box-form-pw-label-clear-img"
-                      ></span>
-                    </div>
-                    <span
-                      value="true"
-                      class="login-box-form-pw-label-cert"
-                    ></span>
-                  </label>
-                  <p
-                    data-test="errors-password"
-                    class="login-box-form-pw-badpw"
-                  >
-                    비밀번호는 최소 6자리 이상이어야 합니다.
-                  </p> -->
                                 </div>
                                 <button
                                     @click="memberStore.login(memberStore.email, memberStore.password)"
@@ -142,9 +85,7 @@
                             </div>
                             <div class="login-box-signup">
                                 계정이 없으신가요?
-                                <!-- <router-link to="/signup"> -->
                                 <button @click="modalSignup()" class="login-box-signup-button">회원가입</button>
-                                <!-- </router-link> -->
                             </div>
                             <hr class="login-box-divide" />
                             <ul class="login-box-sociallogin">
@@ -374,65 +315,6 @@ export default {
     margin: 0px 0px 0px 24px;
 }
 
-/* 틀린 입력값 */
-/* .login-box-form-id-label-wrong {
-  display: flex;
-  -webkit-box-align: center;
-  align-items: center;
-  background: rgb(255, 240, 240);
-  box-sizing: border-box;
-  width: 100%;
-  height: 44px;
-  padding: 0px 12px;
-  border: 1px solid rgb(245, 0, 0);
-  border-radius: 6px;
-}
-
-.login-box-form-id-label-text-wrong {
-  display: flex;
-  flex: 1 1 0%;
-}
-
-.login-box-form-id-label-text-input-wrong {
-  background: transparent;
-  font-weight: 400;
-  font-size: 16px;
-  letter-spacing: -0.6px;
-  line-height: 21px;
-  width: 100%;
-  padding: 0px;
-  border: 0px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  caret-color: rgb(255, 47, 110);
-}
-
-.login-box-form-id-label-clear-wrong {
-  display: inline-flex;
-  -webkit-box-align: center;
-  align-items: center;
-  width: 24px;
-  height: 100%;
-}
-
-.login-box-form-id-label-clear-img-wrong {
-  display: inline-block;
-  background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxwYXRoIGZpbGw9IiNBMEEwQTAiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTEyLjIwOCAxMS40TDkuMzggOC41N2wtLjgwOS44MDkgMi44MjkgMi44MjgtMi44MjkgMi44MjguODA5LjgwOSAyLjgyOC0yLjgyOSAyLjgyOCAyLjgyOS44MDktLjgwOS0yLjgyOS0yLjgyOCAyLjgyOS0yLjgyOC0uODA5LS44MDktMi44MjggMi44Mjl6TTEyIDIwYTggOCAwIDEgMSAwLTE2IDggOCAwIDAgMSAwIDE2eiIvPgo8L3N2Zz4K)
-    center center / cover no-repeat;
-  width: 24px;
-  height: 24px;
-  cursor: pointer;
-}
-
-.login-box-form-id-label-cert-wrong {
-  display: inline-block;
-  background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMSAxKSI+CiAgICAgICAgPGNpcmNsZSBjeD0iMTEiIGN5PSIxMSIgcj0iMTAuNSIgc3Ryb2tlPSIjRjUwMDAwIi8+CiAgICAgICAgPHBhdGggZmlsbD0iI0Y1MDAwMCIgZD0iTTExIDE0YTEuNSAxLjUgMCAxIDEgMCAzIDEuNSAxLjUgMCAwIDEgMC0zem0wLTlhMS41IDEuNSAwIDAgMSAxLjUgMS41VjExYTEuNSAxLjUgMCAwIDEtMyAwVjYuNUExLjUgMS41IDAgMCAxIDExIDV6Ii8+CiAgICA8L2c+Cjwvc3ZnPgo=)
-    center center / cover no-repeat;
-  width: 24px;
-  height: 24px;
-  margin: 0px 0px 0px 24px;
-} */
-
 .login-box-form-id-badid {
     display: none;
     color: rgb(245, 0, 0);
@@ -501,73 +383,6 @@ export default {
     height: 24px;
     margin: 0px 0px 0px 24px;
 }
-
-/* 틀린 입력값 */
-/* .login-box-form-pw-label {
-  display: flex;
-  -webkit-box-align: center;
-  align-items: center;
-  background: rgb(255, 240, 240);
-  box-sizing: border-box;
-  width: 100%;
-  height: 44px;
-  padding: 0px 12px;
-  border: 1px solid rgb(245, 0, 0);
-  border-radius: 6px;
-}
-
-.login-box-form-pw-label-text {
-  display: flex;
-  flex: 1 1 0%;
-}
-
-.login-box-form-pw-label-text-input {
-  background: transparent;
-  font-weight: 400;
-  font-size: 16px;
-  letter-spacing: -0.6px;
-  line-height: 21px;
-  width: 100%;
-  padding: 0px;
-  border: 0px;
-  overflow: hidden;
-  caret-color: rgb(255, 47, 110);
-}
-
-.login-box-form-pw-label-clear {
-  display: inline-flex;
-  -webkit-box-align: center;
-  align-items: center;
-  width: 24px;
-  height: 100%;
-}
-
-.login-box-form-pw-label-clear-img {
-  display: inline-block;
-  background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxwYXRoIGZpbGw9IiNBMEEwQTAiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTEyLjIwOCAxMS40TDkuMzggOC41N2wtLjgwOS44MDkgMi44MjkgMi44MjgtMi44MjkgMi44MjguODA5LjgwOSAyLjgyOC0yLjgyOSAyLjgyOCAyLjgyOS44MDktLjgwOS0yLjgyOS0yLjgyOCAyLjgyOS0yLjgyOC0uODA5LS44MDktMi44MjggMi44Mjl6TTEyIDIwYTggOCAwIDEgMSAwLTE2IDggOCAwIDAgMSAwIDE2eiIvPgo8L3N2Zz4K)
-    center center / cover no-repeat;
-  width: 24px;
-  height: 24px;
-  cursor: pointer;
-}
-
-.login-box-form-pw-label-cert {
-  display: inline-block;
-  background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMSAxKSI+CiAgICAgICAgPGNpcmNsZSBjeD0iMTEiIGN5PSIxMSIgcj0iMTAuNSIgc3Ryb2tlPSIjRjUwMDAwIi8+CiAgICAgICAgPHBhdGggZmlsbD0iI0Y1MDAwMCIgZD0iTTExIDE0YTEuNSAxLjUgMCAxIDEgMCAzIDEuNSAxLjUgMCAwIDEgMC0zem0wLTlhMS41IDEuNSAwIDAgMSAxLjUgMS41VjExYTEuNSAxLjUgMCAwIDEtMyAwVjYuNUExLjUgMS41IDAgMCAxIDExIDV6Ii8+CiAgICA8L2c+Cjwvc3ZnPgo=)
-    center center / cover no-repeat;
-  width: 24px;
-  height: 24px;
-  margin: 0px 0px 0px 24px;
-}
-
-.login-box-form-pw-badpw {
-  color: rgb(245, 0, 0);
-  font-size: 13px;
-  font-weight: 400;
-  letter-spacing: -0.2px;
-  line-height: 18px;
-  margin: 6px 12px 4px;
-} */
 
 .login-box-form-button {
     padding: 0px;

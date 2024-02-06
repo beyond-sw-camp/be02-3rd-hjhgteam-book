@@ -3,7 +3,10 @@
         <a href="#">
             <div class="content_li_div">
                 <div class="content_img">
-                    <img class="img_class" src="https://practice-2023.s3.ap-northeast-2.amazonaws.com/2024/01/17/16e48730-0058-48e1-b8b2-1854b522ea4e_image1.jpg" />
+                    <img
+                        class="img_class"
+                        src="https://practice-2023.s3.ap-northeast-2.amazonaws.com/2024/01/17/16e48730-0058-48e1-b8b2-1854b522ea4e_image1.jpg"
+                    />
                 </div>
                 <div class="content_div2"></div>
             </div>
@@ -19,7 +22,10 @@
         <a href="#">
             <div class="content_li_div">
                 <div class="content_img">
-                    <img class="img_class" src="https://practice-2023.s3.ap-northeast-2.amazonaws.com/2024/02/01/94f3d9a9-29a6-478a-aa8a-cd69d1389f70_%EB%A7%88%EB%A3%A8%EB%8A%94%EA%B0%95%EC%A5%90.jpg" />
+                    <img
+                        class="img_class"
+                        src="https://practice-2023.s3.ap-northeast-2.amazonaws.com/2024/02/01/94f3d9a9-29a6-478a-aa8a-cd69d1389f70_%EB%A7%88%EB%A3%A8%EB%8A%94%EA%B0%95%EC%A5%90.jpg"
+                    />
                 </div>
                 <div class="content_div2"></div>
             </div>
@@ -33,10 +39,7 @@
     </li>
 </template>
 
-<script>
-
-</script>
-
+<script></script>
 
 <style scoped>
 .content_li {

@@ -3,8 +3,7 @@
         <a class="follow_a" href="#">
             <div class="photo">
                 <div class="photo2">
-                    <div class="photo3">
-                    </div>
+                    <div class="photo3"></div>
                 </div>
             </div>
             <div class="follow_info">
@@ -19,44 +18,36 @@
 </template>
 
 <script>
-
-import axios from 'axios';
+import axios from "axios";
 
 export default {
-
-data() {
-    return { followerList: [], followercount: "" }
-},
-
-methods: {
-    async getFollowerList() {
-
-        try {
-            const backend = "http://www.bookspedia.kro.kr/api";
-            let aToken = sessionStorage.getItem("aToken");
-            let response = await axios.get( backend +"/follow/list/followers",
-                {
-                    headers: {
-                        Authorization: "Bearer " + aToken
-                    }
-                });
-            this.followerList = response.data;
-
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
+    data() {
+        return { followerList: [], followercount: "" };
     },
 
-    components: {
+    methods: {
+        async getFollowerList() {
+            try {
+                const backend = "http://www.bookspedia.kro.kr/api";
+                let aToken = sessionStorage.getItem("aToken");
+                let response = await axios.get(backend + "/follow/list/followers", {
+                    headers: {
+                        Authorization: "Bearer " + aToken,
+                    },
+                });
+                this.followerList = response.data;
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        },
 
-    }
-},
+        components: {},
+    },
 
-mounted() {
-    this.getFollowerList();
-}
-}
-
+    mounted() {
+        this.getFollowerList();
+    },
+};
 </script>
 
 <style scoped>
@@ -121,7 +112,8 @@ mounted() {
     box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 0px 1px inset;
     position: relative;
     z-index: 1;
-    background: url(https://practice-2023.s3.ap-northeast-2.amazonaws.com/2024/02/%EA%B8%B0%EB%B3%B8%EC%9D%B4%EB%AF%B8%EC%A7%80.png) center center / cover no-repeat;
+    background: url(https://practice-2023.s3.ap-northeast-2.amazonaws.com/2024/02/%EA%B8%B0%EB%B3%B8%EC%9D%B4%EB%AF%B8%EC%A7%80.png)
+        center center / cover no-repeat;
     width: 100%;
     height: 100%;
 }

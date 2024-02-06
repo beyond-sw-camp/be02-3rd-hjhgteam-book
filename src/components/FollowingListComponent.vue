@@ -3,9 +3,7 @@
         <a title="닉네임1" class="follow_a" href="#">
             <div class="photo">
                 <div class="photo2">
-                    <div class="photo3">
-
-                    </div>
+                    <div class="photo3"></div>
                 </div>
             </div>
             <div class="follow_info">
@@ -26,45 +24,37 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 
 export default {
-
     data() {
-        return { followingList: [] }
+        return { followingList: [] };
     },
 
     methods: {
         async getFollowingList() {
-
             try {
                 const backend = "http://www.bookspedia.kro.kr/api";
                 let aToken = sessionStorage.getItem("aToken");
-                let response = await axios.get(backend + "/follow/list/followings",
-                    {
-                        headers: {
-                            Authorization: "Bearer " + aToken
-
-                        }
-                    });
+                let response = await axios.get(backend + "/follow/list/followings", {
+                    headers: {
+                        Authorization: "Bearer " + aToken,
+                    },
+                });
                 this.followingList = response.data;
-                console.log(this.followingList)
-
+                console.log(this.followingList);
             } catch (error) {
-                console.error('Error fetching data:', error);
+                console.error("Error fetching data:", error);
             }
         },
 
-        components: {
-
-        }
+        components: {},
     },
 
     mounted() {
         this.getFollowingList();
-    }
-}
-
+    },
+};
 </script>
 
 <style scoped>
@@ -118,7 +108,8 @@ export default {
     box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 0px 1px inset;
     position: relative;
     z-index: 1;
-    background: url(https://practice-2023.s3.ap-northeast-2.amazonaws.com/2024/02/04/91d1b266-cf60-4a2b-8609-78809f958add_test.png) center center / cover no-repeat;
+    background: url(https://practice-2023.s3.ap-northeast-2.amazonaws.com/2024/02/04/91d1b266-cf60-4a2b-8609-78809f958add_test.png)
+        center center / cover no-repeat;
     width: 100%;
     height: 100%;
 }

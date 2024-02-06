@@ -92,33 +92,6 @@
                                         <span value="false" class="signup-box-main-pw-label-cert"></span>
                                     </label>
                                 </div>
-                                <!-- <div class="signup-box-main-name">
-                  <label value="false" class="signup-box-main-name-label">
-                    <div class="signup-box-main-name-label-text">
-                      <input
-                        autocomplete="off"
-                        placeholder="이름"
-                        type="text"
-                        name="name"
-                        class="signup-box-main-name-label-input"
-                        value=""
-                      />
-                    </div>
-                    <div value="false" class="signup-box-main-name-label-clear">
-                      <span
-                        aria-label="clear"
-                        data-test="clearButton"
-                        role="button"
-                        class="signup-box-main-name-label-clear-img"
-                      ></span>
-                    </div>
-                    <span
-                      value="false"
-                      class="signup-box-main-name-label-cert"
-                    ></span>
-                  </label>
-                </div> -->
-
                                 <button type="button" class="signup-box-main-lang">
                                     <span
                                         height="24px"
@@ -137,9 +110,7 @@
                             </form>
                             <div class="signup-box-main-login">
                                 이미 가입하셨나요?
-                                <!-- <router-link to="/login"> -->
                                 <button @click="modalLogin()" class="signup-box-main-login-button">로그인</button>
-                                <!-- </router-link> -->
                             </div>
                             <hr class="signup-box-main-divide" />
                             <ul class="signup-box-main-socialsignup">
@@ -194,18 +165,12 @@
 
 <script>
 import axios from "axios";
-// import { mapStores } from "pinia";
-// import { useMemberStore } from "@/stores/useMemberStore";
-
 export default {
     name: "SignupComponent",
     data() {
         return {
             member: { email: "", password: "" },
         };
-    },
-    computed: {
-        // ...mapStores(useMemberStore),
     },
     methods: {
         async signup() {

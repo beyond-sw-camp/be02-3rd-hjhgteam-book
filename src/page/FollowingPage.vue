@@ -1,16 +1,19 @@
 <template>
     <!DOCTYPE html>
     <html lang="ko">
+        <head>
+            <meta charset="UTF-8" />
+            <title>Document</title>
+            <link
+                rel="stylesheet"
+                href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+                integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+                crossorigin="anonymous"
+                referrerpolicy="no-referrer"
+            />
+        </head>
 
-    <head>
-        <meta charset="UTF-8" />
-        <title>Document</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-            integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-            crossorigin="anonymous" referrerpolicy="no-referrer" />
-    </head>
-
-    <body>
+        <body>
             <div class="back">
                 <div class="follow_box">
                     <section class="section2">
@@ -18,7 +21,7 @@
                             <div>
                                 <div class="follow"></div>
                                 <ul class="follow_title">
-                                    <li style="font-weight: 700; font-size: 20px; padding-right: 10px;">팔로잉</li>
+                                    <li style="font-weight: 700; font-size: 20px; padding-right: 10px">팔로잉</li>
                                 </ul>
                             </div>
                             <ul class="follow_ul">
@@ -28,20 +31,18 @@
                     </section>
                 </div>
             </div>
-    </body>
-
+        </body>
     </html>
 </template>
 
 <script>
-import FollowingListComponent from '../components/FollowingListComponent.vue'
+import FollowingListComponent from "../components/FollowingListComponent.vue";
 
-export default{
-
+export default {
     components: {
-        FollowingListComponent
-    }
-}
+        FollowingListComponent,
+    },
+};
 </script>
 
 <style scoped>
@@ -67,7 +68,6 @@ li {
     width: 100%;
     padding: 15px 30px 16px;
     border-bottom: solid 13px rgb(248, 248, 248);
-
 }
 
 .back {
@@ -80,7 +80,7 @@ li {
     user-select: none;
     min-width: 719px;
     /* 높이 지정 나중에 수정하기 */
-     height: 500px;
+    height: 500px;
 }
 
 .follow_box {
@@ -102,7 +102,6 @@ li {
 .section2_div1 {
     position: relative;
 }
-
 
 .follow {
     padding-top: 100px;
@@ -129,6 +128,4 @@ li {
     box-sizing: border-box;
     display: block;
 }
-
-
 </style>

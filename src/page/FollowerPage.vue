@@ -1,17 +1,20 @@
 <template>
     <!DOCTYPE html>
     <html lang="ko">
+        <head>
+            <meta charset="UTF-8" />
+            <title>Document</title>
+            <link
+                rel="stylesheet"
+                href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+                integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+                crossorigin="anonymous"
+                referrerpolicy="no-referrer"
+            />
+        </head>
 
-    <head>
-        <meta charset="UTF-8" />
-        <title>Document</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-            integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-            crossorigin="anonymous" referrerpolicy="no-referrer" />
-    </head>
-
-    <body>
-        <!-- <section class="follow_section"> -->
+        <body>
+            <!-- <section class="follow_section"> -->
             <div class="back">
                 <div class="follow_box">
                     <section class="section2">
@@ -19,7 +22,7 @@
                             <div>
                                 <div class="follow"></div>
                                 <ul class="follow_title">
-                                    <li style="font-weight: 700; font-size: 20px; padding-right: 10px;">팔로우</li>
+                                    <li style="font-weight: 700; font-size: 20px; padding-right: 10px">팔로우</li>
                                 </ul>
                             </div>
                             <FollowerListComponent></FollowerListComponent>
@@ -27,35 +30,32 @@
                     </section>
                 </div>
             </div>
-        <!-- </section> -->
-    </body>
-
+            <!-- </section> -->
+        </body>
     </html>
 </template>
 
 <script>
-import FollowerListComponent from '../components/FollowerListComponent.vue'
+import FollowerListComponent from "../components/FollowerListComponent.vue";
 
-export default{
-
+export default {
     components: {
-        FollowerListComponent
-    }
-}
-
+        FollowerListComponent,
+    },
+};
 </script>
 
 <style scoped>
-a{
+a {
     text-decoration: none;
     color: black;
 }
 
-li{
+li {
     list-style: none;
 }
 
-.follow_section{
+.follow_section {
     padding-top: 62px;
     padding-bottom: unset;
     min-width: 719px;
@@ -63,15 +63,14 @@ li{
     display: block;
 }
 
-.follow_list{
+.follow_list {
     box-sizing: border-box;
     width: 100%;
     padding: 15px 30px 16px;
     border-bottom: solid 13px rgb(248, 248, 248);
-
 }
 
-.back{
+.back {
     display: flex;
     flex-direction: column;
     background: #f8f8f8;
@@ -83,33 +82,32 @@ li{
     height: 500px;
 }
 
-.follow_box{
+.follow_box {
     background: rgb(248, 248, 248);
     width: 640px;
     padding: 0 20px 100px;
     margin: 40px auto 0;
     box-sizing: border-box;
     user-select: none;
-    display: block; 
+    display: block;
 }
 
-.section2{
+.section2 {
     margin: 0;
     background-color: #fff;
     width: 100%;
 }
 
-.section2_div1{
+.section2_div1 {
     position: relative;
 }
 
-
-.follow{
+.follow {
     padding-top: 100px;
     margin: 0px 0px -82.5px;
 }
 
-.follow_title{
+.follow_title {
     font-size: 14px;
     font-weight: 500;
     padding-left: 40px;
@@ -118,6 +116,4 @@ li{
     display: flex;
     border-bottom: rgb(248, 248, 248) solid 1px;
 }
-
-
 </style>

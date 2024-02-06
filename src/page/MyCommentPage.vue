@@ -1,63 +1,62 @@
 <template>
     <!DOCTYPE html>
     <html lang="ko">
+        <head>
+            <meta charset="UTF-8" />
+            <title>컬렉션 리스트</title>
+            <link
+                rel="stylesheet"
+                href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+                integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+                crossorigin="anonymous"
+                referrerpolicy="no-referrer"
+            />
+        </head>
 
-    <head>
-        <meta charset="UTF-8" />
-        <title>컬렉션 리스트</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-            integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-            crossorigin="anonymous" referrerpolicy="no-referrer" />
-    </head>
-
-    <body>
-        <!-- <section class="follow_section"> -->
-        <div class="back">
-            <div class="follow_box">
-                <section class="section2">
-                    <div class="section2_div1">
-                        <div>
-                            <div class="follow"></div>
-                            <ul class="comment_title">
-                                <li style="font-weight: 700; font-size: 20px; padding-right: 10px;">코멘트/평가</li>
+        <body>
+            <!-- <section class="follow_section"> -->
+            <div class="back">
+                <div class="follow_box">
+                    <section class="section2">
+                        <div class="section2_div1">
+                            <div>
+                                <div class="follow"></div>
+                                <ul class="comment_title">
+                                    <li style="font-weight: 700; font-size: 20px; padding-right: 10px">코멘트/평가</li>
+                                </ul>
+                            </div>
+                            <ul class="tab">
+                                <li class="tab_item active">웹툰</li>
+                                <li class="tab_item">
+                                    <a href="#tab2">웹소설</a>
+                                </li>
                             </ul>
-                        </div>
-                        <ul class="tab">
-                            <li class="tab_item active">
-                                웹툰
-                            </li>
-                            <li class="tab_item">
-                                <a href="#tab2">웹소설</a>
-                            </li>
-                        </ul>
-                        <div>
-                            <div id="tab1" class="contentList">
-                                <div class="content_div">
-                                    <ul class="content_ul">
-                                        <WebtoonComment></WebtoonComment>
-                                    </ul>
+                            <div>
+                                <div id="tab1" class="contentList">
+                                    <div class="content_div">
+                                        <ul class="content_ul">
+                                            <WebtoonComment></WebtoonComment>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </section>
+                    </section>
+                </div>
             </div>
-        </div>
-        <!-- </section> -->
-
-    </body>
-
+            <!-- </section> -->
+        </body>
     </html>
 </template>
 
 <script>
-import WebtoonComment from "../components/WebtoonComponent.vue"
+import WebtoonComment from "../components/WebtoonComponent.vue";
 
 export default {
     components: {
-        WebtoonComment
-    }
-}
+        WebtoonComment,
+    },
+};
 </script>
 
 <style scoped>
@@ -101,7 +100,7 @@ li {
 }
 
 .tab__content-wrapper {
-    padding: 1rem
+    padding: 1rem;
 }
 
 .tab__content {

@@ -7,7 +7,7 @@ import ChatRoomPage from "../page/ChatRoomPage.vue";
 import MainPage from "../page/MainPage.vue";
 import CommentsPage from "../page/CommentsPage.vue";
 import DetailPage from "../page/DetailPage.vue";
-import SearchPage from "../page/SearchPage.vue"; 
+import SearchPage from "../page/SearchPage.vue";
 import CommentModal from "../components/CommentModalComponent.vue";
 // 마이페이지 라우터
 import MyPage from "@/page/MyPage.vue";
@@ -18,19 +18,14 @@ import FollowerPage from "@/page/FollowerPage.vue";
 import CollectionListPage from "@/page/CollectionListPage.vue";
 import CollectionDetailPage from "@/page/CollectionDetailPage.vue";
 import MyCommentPage from "@/page/MyCommentPage.vue";
-import WebNovelComponent from "@/components/WebNovelComponent"
-
+import WebNovelComponent from "@/components/WebNovelComponent";
 
 const router = createRouter({
     history: createWebHistory(),
     routes: [
         { path: "/", component: MainPage },
-        // { path: "/login", component: LoginComponent },
-        // { path: "/signup", component: SignupComponent },
         { path: "/detail/:id/comments", component: CommentsPage },
-        { path: "/detail/:id", component: DetailPage,
-        children: [{ path: "comment", component: CommentModal }],
-    },
+        { path: "/detail/:id", component: DetailPage, children: [{ path: "comment", component: CommentModal }] },
         { path: "/search/1", component: SearchPage },
         { path: "/chatlist", component: ChatListPage },
         {
@@ -51,10 +46,11 @@ const router = createRouter({
         { path: "/collection", component: CollectionListPage },
         { path: "/collectiondetail/:id", component: CollectionDetailPage },
         { path: "/mycomment", component: MyCommentPage },
-        { 
-            path: "/mycomment", component: MyCommentPage, 
-            children: [{ path: "webnovel", component: WebNovelComponent }]
-          },
+        {
+            path: "/mycomment",
+            component: MyCommentPage,
+            children: [{ path: "webnovel", component: WebNovelComponent }],
+        },
     ],
 });
 

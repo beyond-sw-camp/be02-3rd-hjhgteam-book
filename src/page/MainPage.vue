@@ -1,160 +1,132 @@
 <template>
-  <div class="container mb-5">
-
-
-    
-    <section class="index-category">
-      <div class="index-category_title">
-        <b>순위</b>
-      </div>
-      <div
-        id="rankCarousel"
-        class="carousel carousel-dark slide"
-        data-ride="carousel"
-      >
-        <div class="carousel-inner">
-          <div
-            v-for="(chunk, index) in chunkedLists1"
-            :key="index"
-            class="carousel-item"
-            :class="{ active: index === 0 }"
-          >
-            <div class="row">
-              <ul class="card-wrapper">
-                <li
-                  v-for="(movie, movieIndex) in chunk"
-                  :key="movieIndex"
-                  class="card"
-                >
-                  <ContantCard v-bind:dataObj="movie"></ContantCard>
-                </li>
-              </ul>
+    <div class="container mb-5">
+        <section class="index-category">
+            <div class="index-category_title">
+                <b>순위</b>
             </div>
-          </div>
-        </div>
-        <button
-          id="prevBtn"
-          class="carousel-control-prev"
-          type="button"
-          data-bs-target="#rankCarousel"
-          data-bs-slide="prev"
-        >
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        </button>
-        <button
-          id="nextBtn"
-          class="carousel-control-next"
-          type="button"
-          data-bs-target="#rankCarousel"
-          data-bs-slide="next"
-        >
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        </button>
-      </div>
-    </section>
-
-    <section class="index-category">
-      <div class="index-category_title">
-        <b>컬렉션1</b>
-      </div>
-      <div
-        id="collectCarousel"
-        class="carousel carousel-dark slide"
-        data-ride="carousel"
-      >
-        <div class="carousel-inner">
-          <div
-            v-for="(chunk, index) in chunkedLists2"
-            :key="index"
-            class="carousel-item"
-            :class="{ active: index === 0 }"
-          >
-            <div class="row">
-              <ul class="card-wrapper">
-                <li
-                  v-for="(movie, movieIndex) in chunk"
-                  :key="movieIndex"
-                  class="card"
+            <div id="rankCarousel" class="carousel carousel-dark slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div
+                        v-for="(chunk, index) in chunkedLists1"
+                        :key="index"
+                        class="carousel-item"
+                        :class="{ active: index === 0 }"
+                    >
+                        <div class="row">
+                            <ul class="card-wrapper">
+                                <li v-for="(movie, movieIndex) in chunk" :key="movieIndex" class="card">
+                                    <ContantCard v-bind:dataObj="movie"></ContantCard>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <button
+                    id="prevBtn"
+                    class="carousel-control-prev"
+                    type="button"
+                    data-bs-target="#rankCarousel"
+                    data-bs-slide="prev"
                 >
-                  <ContantCard v-bind:dataObj="movie"></ContantCard>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <button
-          id="prevBtn"
-          class="carousel-control-prev"
-          type="button"
-          data-bs-target="#collectCarousel"
-          data-bs-slide="prev"
-        >
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        </button>
-        <button
-          id="nextBtn"
-          class="carousel-control-next"
-          type="button"
-          data-bs-target="#collectCarousel"
-          data-bs-slide="next"
-        >
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        </button>
-      </div>
-    </section>
-
-    <section class="index-category">
-      <div class="index-category_title">
-        <b>컬렉션axios</b>
-        <!-- id 수정 3개 -->
-      </div>
-      <div
-        id="collectCarousel2"
-        class="carousel carousel-dark slide"
-        data-ride="carousel"
-      >
-        <div class="carousel-inner">
-          <div
-            v-for="(chunk, index) in chunkedLists3"
-            :key="index"
-            class="carousel-item"
-            :class="{ active: index === 0 }"
-          >
-            <div class="row">
-              <ul class="card-wrapper">
-                <li
-                  v-for="(movie, movieIndex) in chunk"
-                  :key="movieIndex"
-                  class="card"
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </button>
+                <button
+                    id="nextBtn"
+                    class="carousel-control-next"
+                    type="button"
+                    data-bs-target="#rankCarousel"
+                    data-bs-slide="next"
                 >
-                  <ContantCard v-bind:dataObj="movie"></ContantCard>
-                </li>
-              </ul>
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </button>
             </div>
-          </div>
-        </div>
-        <button
-          id="prevBtn"
-          class="carousel-control-prev"
-          type="button"
-          data-bs-target="#collectCarousel2"
-          data-bs-slide="prev"
-        >
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        </button>
-        <button
-          id="nextBtn"
-          class="carousel-control-next"
-          type="button"
-          data-bs-target="#collectCarousel2"
-          data-bs-slide="next"
-        >
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        </button>
-      </div>
-    </section>
- 
-  </div>
+        </section>
+
+        <section class="index-category">
+            <div class="index-category_title">
+                <b>컬렉션1</b>
+            </div>
+            <div id="collectCarousel" class="carousel carousel-dark slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div
+                        v-for="(chunk, index) in chunkedLists2"
+                        :key="index"
+                        class="carousel-item"
+                        :class="{ active: index === 0 }"
+                    >
+                        <div class="row">
+                            <ul class="card-wrapper">
+                                <li v-for="(movie, movieIndex) in chunk" :key="movieIndex" class="card">
+                                    <ContantCard v-bind:dataObj="movie"></ContantCard>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <button
+                    id="prevBtn"
+                    class="carousel-control-prev"
+                    type="button"
+                    data-bs-target="#collectCarousel"
+                    data-bs-slide="prev"
+                >
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </button>
+                <button
+                    id="nextBtn"
+                    class="carousel-control-next"
+                    type="button"
+                    data-bs-target="#collectCarousel"
+                    data-bs-slide="next"
+                >
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </button>
+            </div>
+        </section>
+
+        <section class="index-category">
+            <div class="index-category_title">
+                <b>컬렉션axios</b>
+                <!-- id 수정 3개 -->
+            </div>
+            <div id="collectCarousel2" class="carousel carousel-dark slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div
+                        v-for="(chunk, index) in chunkedLists3"
+                        :key="index"
+                        class="carousel-item"
+                        :class="{ active: index === 0 }"
+                    >
+                        <div class="row">
+                            <ul class="card-wrapper">
+                                <li v-for="(movie, movieIndex) in chunk" :key="movieIndex" class="card">
+                                    <ContantCard v-bind:dataObj="movie"></ContantCard>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <button
+                    id="prevBtn"
+                    class="carousel-control-prev"
+                    type="button"
+                    data-bs-target="#collectCarousel2"
+                    data-bs-slide="prev"
+                >
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </button>
+                <button
+                    id="nextBtn"
+                    class="carousel-control-next"
+                    type="button"
+                    data-bs-target="#collectCarousel2"
+                    data-bs-slide="next"
+                >
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </button>
+            </div>
+        </section>
+    </div>
 </template>
 
 <script>
@@ -317,20 +289,20 @@ export default {
         return { testList, axiosList: [] };
     },
     methods: {
-        
-        async getAllContant(page, size) { 
+        async getAllContant(page, size) {
             try {
-            let response = await axios.get(backend+ `/content/list?page=${page}&size=${size}`);
-      
-            console.log(response.data);
-            this.axiosList = response.data;
-        } catch (error) {
-        console.error(error);
-      }}
+                let response = await axios.get(backend + `/content/list?page=${page}&size=${size}`);
+
+                console.log(response.data);
+                this.axiosList = response.data;
+            } catch (error) {
+                console.error(error);
+            }
+        },
     },
     components: {
         ContantCard,
-    }, 
+    },
     created() {
         this.getAllContant(1, 12);
     },
@@ -367,8 +339,8 @@ export default {
 @import "../assets/css/index.css";
 
 #collectCarousel .card {
-  /* collectCarousel 속한 .card의 CSS 스타일을 여기에 추가하세요 */
-  width: calc(100% / 6);
-  /* 등분 */
+    /* collectCarousel 속한 .card의 CSS 스타일을 여기에 추가하세요 */
+    width: calc(100% / 6);
+    /* 등분 */
 }
 </style>

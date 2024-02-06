@@ -103,7 +103,6 @@ export default {
                 signupBtn.style.display = "inline-block";
                 mypageBtn.style.display = "none";
                 logoutBtn.style.display = "none";
-                // window.location.replace("/");
             }
         },
         logout() {
@@ -135,8 +134,6 @@ body {
 }
 
 .header {
-    /* min-width: 760px; */
-    /* margin: 0 3.5%; */
     display: block;
     height: 62px;
     top: 0px;

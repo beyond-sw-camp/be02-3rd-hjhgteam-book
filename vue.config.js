@@ -1,8 +1,24 @@
-const { defineConfig } = require('@vue/cli-service')
-module.exports = defineConfig({
-  transpileDependencies: true
-})
+// const { defineConfig } = require("@vue/cli-service");
+// module.exports = defineConfig({
+//     transpileDependencies: true,
+//     devServer: {
+//         proxy: {
+//             "/api": {
+//                 target: "http://http://www.bookspedia.kro.kr",
+//                 changeOrigin: true,
+//                 pathRewrite: {
+//                     "^/api": "",
+//                 },
+//             },
+//         },
+//     },
+// });
 
+module.exports = {
+    publicPath: "",
+    // publicPath: "/dist/",
+    // indexPath: "index.html",
+};
 
 // module.exports = {
 //   ...defineConfig({
