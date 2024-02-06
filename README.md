@@ -33,35 +33,101 @@
 
 ## 프로젝트 시연 영상
 
-하나씩 토글로 영상처리
 
 <details>
-  <summary> ▶ 프로젝트 시연</summary>
+  <summary> 프로젝트 시연</summary>
 
   <details>
-    <summary> - 회원가입 </summary>
+    <summary> 회원가입 </summary>
 
 ### 회원가입
 
-<img src = "./src/assets/signup.gif" width="1000" height="400">
+<img src = "./src/assets/gif/signup.gif" width="600" height="400">
 
   </details>
+
+
+
   <details>
-    <summary> - 로그인 & 로그아웃 </summary>
+    <summary> 로그인 & 로그아웃 </summary>
 
 ### 로그인 & 로그아웃
 
-<img src = "./src/assets/login_logout.gif" width="1000" height="400">
+<img src = "./src/assets/gif/login_logout.gif" width="600" height="400">
 
   </details>
   <details>
-    <summary> - 마이페이지 </summary>
+    <summary> 마이페이지 </summary>
 
 ### 마이페이지
-
-  <img src = https://github.com/beyond-sw-camp/be02-3rd-hjhgteam-book/assets/148953522/3a1e3499-814c-4dfc-8dec-993e38a00366 width="600" height="400">
+  <img src ="./src/assets/gif/마이페이지.jpg" width="600" height="400">
 
   </details>
+  <details>
+    <summary> 마이페이지 수정 </summary>
+
+### 마이페이지 수정
+
+  
+  <img src ="./src/assets/gif/마이페이지 수정.jpg" width="600" height="400">
+  <img src ="./src/assets/gif/마이페이지 수정2.jpg" width="600" height="400">
+
+  </details>
+
+
+  <details>
+    <summary> 팔로우 & 팔로잉 </summary>
+
+### 팔로우 & 팔로잉
+  <img src ="./src/assets/gif/팔로우.jpg" width="600" height="400">
+  <img src ="./src/assets/gif/팔로잉.jpg" width="600" height="400">
+
+  </details>
+
+  <details>
+    <summary> 컬렉션 </summary>
+
+### 컬렉션
+  <img src ="./src/assets/gif/내컬렉션디테일.jpg" width="600" height="400">
+  <img src ="./src/assets/gif/내컬렉션목록.jpg" width="600" height="400">
+
+  </details>
+  
+  <details>
+    <summary> 코멘트 </summary>
+
+### 코멘트
+  <img src ="./src/assets/gif/코멘트.gif" width="600" height="400">
+
+  </details>
+
+  <details>
+    <summary> 작품 코멘트 생성</summary>
+
+### 작품 코멘트 생성
+  <img src ="./src/assets/gif/commentcreate.gif" width="600" height="400">
+
+  </details>
+
+  <details>
+    <summary> 작품 코멘트 더보기 </summary>
+
+### 작품 코멘트 더보기
+  <img src ="./src/assets/gif/commentmore.gif" width="600" height="400">
+
+  </details>
+
+  <details>
+    <summary> 작품 코멘트 삭제 </summary>
+
+### 작품 코멘트 삭제
+  <img src ="./src/assets/gif/commentdelete.gif" width="600" height="400">
+
+  </details>
+
+
+  
+
 </details>
 
 ## 🤼‍♂️팀원
