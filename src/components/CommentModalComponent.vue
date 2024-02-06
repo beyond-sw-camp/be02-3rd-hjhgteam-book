@@ -1,20 +1,19 @@
 <template>
     <div class="modal_div modal-dialog modal-dialog-centered">
-        <div class="modal-content w-100 p-3">
+        <div class="modal-content w-60 p-3">
             <!-- 코멘트 타이틀 -->
             <div class="d-flex align-items-center justify-content-between mb-3">
-                <h6 class="m-0"><b>제목 1번</b></h6>
+                <h6 class="m-0">
+                    <b>{{ axiosContent.name }}</b>
+                </h6>
                 <router-link :to="`/detail/${id}`">
                     <button type="button" class="btn-close"></button>
                 </router-link>
             </div>
             <!-- 코멘트 입력부분 -->
-            <form
-                action="{% url 'posts:comment_create' detail.id %}?movie_title={{ detail.title }}"
-                method="POST"
-                class="d-flex flex-column log-input w-100 gap-2"
-            >
+            <form method="POST" class="d-flex flex-column log-input w-100 gap-2" @submit.prevent="createComment">
                 <textarea
+                    v-model="commentReq.comment"
                     name="content"
                     id="content"
                     type="text"
@@ -27,7 +26,7 @@
                     <div class="rating">
                         ★★★★★
                         <span class="rating_star" :style="{ width: starWidth }">★★★★★</span>
-                        <input type="range" v-model="ratingC" step="1" min="0" max="10" />
+                        <input type="range" v-model="commentReq.rate" step="1" min="0" max="10" />
                     </div>
                 </span>
                 <div class="d-flex flex-column align-items-end">
@@ -39,23 +38,66 @@
 </template>
 
 <script>
+import axios from "axios";
+
+// const backend = 'https://www.lonuashop.kro.kr/api';
+const backend = "http://3.34.199.45:8080";
+const token = sessionStorage.getItem("token");
+
 export default {
+    name: "CommentModal",
     props: {},
     data() {
         return {
             id: null,
-            ratingC: 0,
+            axiosContent: {},
+            commentReq: {
+                comment: "",
+                contentId: "",
+                rate: 0,
+            },
         };
     },
+    created() {},
+    methods: {
+        async getContent(id) {
+            try {
+                let response = await axios.get(backend + `/content/${id}`);
+                console.log(response.data);
+                this.axiosContent = response.data;
+            } catch (error) {
+                console.error(error);
+            }
+        },
+
+        async createComment() {
+            event.preventDefault();
+            try {
+                let response = await axios.post(backend + `/comment/create`, this.commentReq, {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        "Content-Type": "application/json",
+                    },
+                });
+                console.log(response);
+            } catch (error) {
+                console.error(error);
+            }
+        },
+    },
+
     mounted() {
         // $route.params.id를 통해 id 값을 가져옴
         this.id = this.$route.params.id;
         console.log("id:", this.id);
+        this.getContent(this.id);
+        this.commentReq.contentId = this.id;
+        // console.log(123123);
+        // console.log(sessionStorage.getItem("aToken"));
     },
-    methods: {},
     computed: {
         starWidth() {
-            return `${this.ratingC * 10}%`;
+            return `${this.commentReq.rate * 10}%`;
         },
     },
 };
@@ -65,6 +107,7 @@ export default {
 .modal_div {
     display: block;
     position: fixed;
+
     inset: 0px;
     z-index: 100;
     background: rgba(0, 0, 0, 0.56);
@@ -75,5 +118,9 @@ export default {
 
 .modal-content {
     top: 25%;
+    width: 60%;
+    margin: auto;
+    background-color: papayawhip;
+    border-radius: 30px;
 }
 </style>

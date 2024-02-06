@@ -72,7 +72,7 @@ export default {
     data() {
         return {
             member: { email: "" },
-            logoImg: "https://github.com/Hyeon-Kyun/frontend/assets/96675421/a877995e-6e1c-40e4-acd0-e49fbf08f023", //변경필요
+            logoImg: "https://bookipedia.s3.ap-northeast-2.amazonaws.com/2024/02/06/6adbc0fe-0ead-4186-812e-e5d6e83e876b_bookspedia.png", 
         };
     },
     computed: {
