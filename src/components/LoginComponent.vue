@@ -6,7 +6,7 @@
                     <span @click="modalClose()" id="modalClose">X</span>
                     <span
                         height="38.03px"
-                        src="https://github.com/Hyeon-Kyun/frontend/assets/96675421/a877995e-6e1c-40e4-acd0-e49fbf08f023"
+                        src="https://bookipedia.s3.ap-northeast-2.amazonaws.com/2024/02/06/6adbc0fe-0ead-4186-812e-e5d6e83e876b_bookspedia.png"
                         width="198px"
                         class="login-box-header-img"
                     ></span>
@@ -296,7 +296,7 @@ export default {
 
 .login-box-header-img {
     display: inline-block;
-    background: url(https://github.com/Hyeon-Kyun/frontend/assets/96675421/a877995e-6e1c-40e4-acd0-e49fbf08f023) center
+    background: url(https://bookipedia.s3.ap-northeast-2.amazonaws.com/2024/02/06/6adbc0fe-0ead-4186-812e-e5d6e83e876b_bookspedia.png) center
         center / contain no-repeat;
     width: 198px;
     height: 38.03px;
