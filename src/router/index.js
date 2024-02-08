@@ -18,6 +18,7 @@ import FollowerPage from "@/page/FollowerPage.vue";
 import CollectionListPage from "@/page/CollectionListPage.vue";
 import CollectionDetailPage from "@/page/CollectionDetailPage.vue";
 import MyCommentPage from "@/page/MyCommentPage.vue";
+import WebtoonComponent from "../components/WebtoonComponent";
 import WebNovelComponent from "@/components/WebNovelComponent";
 
 const router = createRouter({
@@ -51,7 +52,22 @@ const router = createRouter({
     {
       path: "/mypage",
       component: MyPage,
-      children: [{ path: "setting", component: MyUpdateComponent }],
+      children: [
+        {
+          path: "setting",
+          component: MyUpdateComponent,
+          beforeEnter: (to, from, next) => {
+            const loginUserId = sessionStorage.getItem("aToken").email;
+            const routeId = to.params.id;
+
+            if (routeId === loginUserId) {
+              next();
+            } else {
+              next("/");
+            }
+          },
+        },
+      ],
     },
     { path: "/userpage", component: UserPage },
     { path: "/following", component: FollowingPage },
@@ -59,20 +75,14 @@ const router = createRouter({
     { path: "/collection", component: CollectionListPage },
     { path: "/collectiondetail/:id", component: CollectionDetailPage },
     { path: "/mycomment", component: MyCommentPage },
+
     {
       path: "/mycomment",
       component: MyCommentPage,
-      children: [{ path: "webnovel", component: WebNovelComponent }],
-    },
-    {
-      path: "/webtoon",
-      component: MainPage,
-      props: (route) => ({ classify: route.query.classify === "true" }),
-    },
-    {
-      path: "/webnovel",
-      component: MainPage,
-      props: (route) => ({ classify: route.query.classify === "true" }),
+      children: [
+        { path: "webtoon", component: WebtoonComponent },
+        { path: "webnovel", component: WebNovelComponent },
+      ],
     },
   ],
 });

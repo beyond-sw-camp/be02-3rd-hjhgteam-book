@@ -7,20 +7,22 @@
             <header class="header_img">
               <div class="header_div">
                 <div class="img_div">
-                  <span class="img_span"></span>
+                  <span class="img_span" style= "z-index:16px; background-image: url(https://image-comic.pstatic.net/webtoon/814543/thumbnail/thumbnail_IMAG21_df84a681-b7ef-4dda-8cef-25b219d35e3e.jpg);"></span>
+                  <span class="img_span" style="z-index:8px ;background-image: url(https://image-comic.pstatic.net/webtoon/817945/thumbnail/thumbnail_IMAG21_120ad315-8518-4430-bb30-739654b49635.jpg);"></span>
                 </div>
               </div>
             </header>
             <section class="title_section">
               <div>
                 <div class="title_div1">
-                  <h1 class="title_h1">컬렉션 이름</h1>
+                  <!-- <h1 class="title_h1">{{ collectionStore.myCommentList.collectionTitle}}</h1> -->
+                  <h1 class="title_h1">심심할 때 보기 좋은 작품들</h1>
                 </div>
               </div>
             </section>
             <section class="content_list">
               <div>
-                <div class="content_div" v-if="selectCollection">
+                <div class="content_div">
                   <ul class="content_ul">
                     <DetailContentCard></DetailContentCard>
                   </ul>
@@ -49,7 +51,6 @@ components: {
 DetailContentCard
 },
 mounted() {
-  this.collectionStore.getCollectionDetail()
 }
 }
 
@@ -128,7 +129,6 @@ box-shadow: rgba(0, 0, 0, 0.65) 0px 0px 8px 4px;
 }
 
 .img_span {
-background-image: url();
 display: inline-block;
 position: absolute;
 inset: 0px;

@@ -6,12 +6,27 @@
                 <div class="content_img">
                     <!-- <img class="img_class" -->
                     <!-- :src="`${detail.contentImage}`" /> -->
-                    <img src="" />
+                    <img class="img_class" src="https://image-comic.pstatic.net/webtoon/814543/thumbnail/thumbnail_IMAG21_df84a681-b7ef-4dda-8cef-25b219d35e3e.jpg" />
                 </div>
                 <div class="content_div2"></div>
             </div>
             <div class="content_name">
-                <div class="content_name2">작품이름</div>
+                <div class="content_name2">마음의 소리</div>
+            </div>
+        </a>
+    </li>
+    <li class="content_li">
+        <a href="#">
+            <div class="content_li_div">
+                <div class="content_img">
+                    <!-- <img class="img_class" -->
+                    <!-- :src="`${detail.contentImage}`" /> -->
+                    <img class="img_class" src="https://image-comic.pstatic.net/webtoon/817945/thumbnail/thumbnail_IMAG21_120ad315-8518-4430-bb30-739654b49635.jpg" />
+                </div>
+                <div class="content_div2"></div>
+            </div>
+            <div class="content_name">
+                <div class="content_name2">어린이집 다니는 구나</div>
             </div>
         </a>
     </li>
@@ -83,5 +98,6 @@ export default {};
     text-overflow: ellipsis;
     font-weight: 400;
     padding-top: 10px;
+    text-align: center;
 }
 </style>

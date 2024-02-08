@@ -1,40 +1,37 @@
-<!-- 컬렉션 목록의 Card -->
+<!-- <img :src='`${collection.contentImage}`'> -->
 <template>
-    <li
-        class="collection_li"
-        v-for="collection in collectionStore.collectionList"
-        :key="collection.id"
-        @click="handleCollectionClick(collection.id)"
-    >
-        <router-link :to="'/collectiondetail/' + collection.id">
-            <a class="collection_a">
+    <li class="collection_li" v-for="collection in collectionStore.mycollectionList" :key="collection.id">
+        <!-- <router-link :to="'/collectiondetail/' + collection.id"> -->
+            <a class="collection_a" :href="'/collectiondetail/' + collection.id">
                 <div class="collection_info">
                     <div class="info_text">
                         <div>
-                            <!-- <img :src='`${collection.contentImage}`'> -->
+
                         </div>
                         <div class="info_name1">
                             <div class="info_name2">{{ collection.collectionTitle }}</div>
+
                         </div>
                     </div>
                 </div>
             </a>
-        </router-link>
-    </li>
+        <!-- </router-link> -->
+    </li>    
 </template>
 
+
 <script>
-import { useCollectionStore } from "../stores/useCollectionStore";
-import { mapStores } from "pinia";
+import { useCollectionStore } from '../stores/useCollectionStore'
+import { mapStores } from 'pinia'
 
 export default {
     data() {
         return {
-            detailList: [],
-        };
+            detailList: []
+        }
     },
     computed: {
-        ...mapStores(useCollectionStore),
+        ...mapStores(useCollectionStore)
     },
     methods: {
         handleCollectionClick(collectionId) {
@@ -44,14 +41,16 @@ export default {
             if (!isNaN(parsedId) && Number.isInteger(parsedId)) {
                 this.collectionStore.getCollectionDetail(parsedId);
             }
-        },
+        }
     },
     mounted() {
         this.collectionStore.getCollectionList();
     },
-    components: {},
-};
+    components: {}
+}
 </script>
+
+
 
 <style scoped>
 .collection_li {

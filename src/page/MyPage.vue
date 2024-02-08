@@ -1,12 +1,11 @@
 <template>
-    <!-- <section class="mypage_section"> -->
-        <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+    <!DOCTYPE html>
+    <html lang="ko">
+
+    <body>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <div class="back">
         <div class="mypage_box">
             <section class="section2">
@@ -19,7 +18,7 @@
                                         font-size: 20px;
                                         padding-right: 10px;
                                         ">
-                                {{member.nickname}} </li>
+                                {{ member.nickname }} </li>
 
                             <li style="color: gray; margin-top: 6px">
                                 {{ member.email }}
@@ -37,11 +36,11 @@
                             <ul>
                                 <li style="list-style: none">
                                     <div class="user_photo">
-                                        <div class="user_photo2"></div>
+                                        <div class="user_photo2" :style="{ backgroundImage: `url('${member.image}')` }"></div>
                                     </div>
                                 </li>
                                 <li class="user_add">
-                                    <a href="/follower" class="follow">0<br />팔로우</a>
+                                    <a href="/follower" class="follow">1<br />팔로우</a>
                                 </li>
                                 <li class="user_add">
                                     <a href="/following" class="follow">1<br />팔로잉</a>
@@ -49,15 +48,15 @@
                             </ul>
                         </div>
                         <div class="myComentList">
-                            <a href="/mycomment" class="myComentList2">
-                                <span class="myComentList_span">1</span>
+                            <a href="/mycomment/webtoon" class="myComentList2">
+                                <span class="myComentList_span">??</span>
                                 <span class="myComentList_span">코멘트/평가</span>
                             </a>
                             <div class="line"></div>
                             <!-- <router-link :to="'/collection'"> -->
                             <a href="/collection" class="myComentList2">
                                 <!-- <a class="myComentList2"> -->
-                                <span class="myComentList_span">4</span>
+                                <span class="myComentList_span">{{ collectionStore.count }}</span>
                                 <span class="myComentList_span">컬렉션</span>
                             </a>
                         </div>
@@ -67,7 +66,11 @@
         </div>
     </div>
     <router-view></router-view>
+</body>
+
+</html>
 </template>
+
 
 <script>
 import { useMemberStore } from '@/stores/useMemberStore';
@@ -76,9 +79,9 @@ import { mapStores } from 'pinia'
 import VueJwtDecode from "vue-jwt-decode";
 
 export default {
-    data(){
+    data() {
         return {
-            member: {email: "", nickname: "", image: ""}
+            member: { email: "", nickname: "", image: "" },
         }
     },
     computed: {
@@ -90,8 +93,10 @@ export default {
 
     mounted() {
         this.member.email = VueJwtDecode.decode(sessionStorage.getItem("aToken")).username;
-        this.member.nickname = VueJwtDecode.decode(sessionStorage.getItem("aToken")).nickname;
+        const decodedToken = VueJwtDecode.decode(sessionStorage.getItem("aToken"), { header: true, encoding_override: 'utf-8' });
+        this.member.nickname = decodedToken.nickname;
         this.member.image = VueJwtDecode.decode(sessionStorage.getItem("aToken")).image;
+        this.collectionStore.getCount()
 
     }
 }
@@ -192,7 +197,7 @@ li {
 }
 
 .user_photo {
-    
+
     padding-top: 135px;
     width: 135px;
     display: flex;
@@ -208,7 +213,7 @@ li {
     z-index: 1;
     display: block;
     position: absolute;
-    background: url("https://practice-2023.s3.ap-northeast-2.amazonaws.com/2024/02/04/ff4795f5-6b94-42b1-a705-184cac7c5e86_img.jpeg") center center / cover no-repeat;
+    /* background: url("https://practice-2023.s3.ap-northeast-2.amazonaws.com/2024/02/04/ff4795f5-6b94-42b1-a705-184cac7c5e86_img.jpeg") center center / cover no-repeat; */
 }
 
 .user_add {

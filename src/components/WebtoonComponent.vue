@@ -1,45 +1,96 @@
 <template>
-    <li class="content_li">
+    <li class="content_li" v-for="myComment in myCommentList" :key="myComment.id">
         <a href="#">
-            <div class="content_li_div">
-                <div class="content_img">
-                    <img
-                        class="img_class"
-                        src="https://practice-2023.s3.ap-northeast-2.amazonaws.com/2024/01/17/16e48730-0058-48e1-b8b2-1854b522ea4e_image1.jpg"
-                    />
+            <div v-if="myComment.content.contentClassify">
+                <div class="content_li_div">
+                    <div class="content_img">
+                        <img class="img_class" :src='`${myComment.content.contentImage}`'>
+
+                    </div>
+                    <div class="content_div2"></div>
                 </div>
-                <div class="content_div2"></div>
-            </div>
-            <div class="content_name">
-                <div class="content_name2">화산귀환</div>
-            </div>
-            <div class="content_rate">
-                <div class="content_rate2">4점</div>
-            </div>
-        </a>
-    </li>
-    <li class="content_li">
-        <a href="#">
-            <div class="content_li_div">
-                <div class="content_img">
-                    <img
-                        class="img_class"
-                        src="https://practice-2023.s3.ap-northeast-2.amazonaws.com/2024/02/01/94f3d9a9-29a6-478a-aa8a-cd69d1389f70_%EB%A7%88%EB%A3%A8%EB%8A%94%EA%B0%95%EC%A5%90.jpg"
-                    />
+                <div class="content_name">
+                    <div class="content_name2">{{ myComment.content.contentName }}</div>
                 </div>
-                <div class="content_div2"></div>
-            </div>
-            <div class="content_name">
-                <div class="content_name2">마루는 강쥐</div>
-            </div>
-            <div class="content_rate">
-                <div class="content_rate2">5점</div>
+                <div class="content_rate">
+                    <div class="content_rate2">{{ myComment.rate }}점</div>
+                </div>
             </div>
         </a>
     </li>
 </template>
 
-<script></script>
+<script>
+import axios from 'axios';
+import { mapStores } from 'pinia'
+import VueJwtDecode from "vue-jwt-decode";
+
+// import { useCommentStore } from '@/stores/useCommentStore';
+
+const backend = "http://www.bookspedia.kro.kr/api";
+// const backend ="http://localhost:8080"
+
+export default {
+    data() {
+        return {
+            commentList: [],
+            member: { id: "" },
+            myCommentList: [],
+            commentCount: ""
+        }
+    },
+
+    computed: {
+        ...mapStores()
+    },
+
+    methods: {
+        async getcommentList(page, size) {
+
+            // let aToken = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Imd1c3duMTI4MUBuYXZlci5jb20iLCJpZCI6MSwibmlja25hbWUiOiLtgaztgaztgaztgawiLCJpbWFnZSI6Imh0dHBzOi8vcHJhY3RpY2UtMjAyMy5zMy5hcC1ub3J0aGVhc3QtMi5hbWF6b25hd3MuY29tLzIwMjQvMDIvMDQvMTMzY2IzNGYtYjRiYi00NDI1LTk2NWEtODg1OTdmZjJlNWU5X2ltZy5qcGVnIiwiaWF0IjoxNzA3MjAwNjk0LCJleHAiOjEwMjQzMjA0MTg0OTUyMDB9.HY6f-eneiuRszBjpCH6DSbWsbZ06LirFGTaiohxN89E"
+
+            let myId = VueJwtDecode.decode(sessionStorage.getItem("aToken")).id;
+
+            let response = await axios.get(backend + "/comment/list?page=" + page + "&size=" + size);
+            this.commentList = response.data;
+
+            console.log(this.commentList);
+
+            this.member.id = myId;
+
+            this.commentList.forEach(comment => {
+                if (this.member.id === comment.member.id && comment.content.contentClassify === true) {
+                    this.myCommentList.push(comment);
+                    console.log(comment)
+                }
+                this.myCommentCount = this.myCommentList.length;
+            });
+            console.log(this.myCommentCount);
+        },
+
+        // async commentCount(page, size) {
+        //     let aToken = sessionStorage.getItem("aToken");
+        //     let response = await axios.get(backend + "/comment/list?page=" + page + "&size=" + size, {
+        //         headers: {
+        //             Authorization: "Bearer " + aToken,
+        //         },
+        //     });
+
+        //     this.collectionList = response.data;
+
+        //     this.count = this.collectionList.length;
+        // },
+    },
+
+    mounted() {
+        // this.commentStore.getcommentList(1, 10);
+        this.getcommentList(1, 100);
+    }
+}
+</script>
+
+
+
 
 <style scoped>
 .content_li {
